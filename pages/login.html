@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCare Connect | Join Our Community</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4e54c8;
+            --primary-light: #8f94fb;
+            --secondary: #ff7e5f;
+            --accent: #43cea2;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 12px;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .logo h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            border: none;
+        }
+
+        .btn-secondary {
+            background: white;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .user-profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .auth-container {
+            display: flex;
+            min-height: calc(100vh - 72px);
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .auth-image {
+            background: linear-gradient(rgba(78, 84, 200, 0.8), rgba(143, 148, 251, 0.8)), 
+                        url('https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1000') center/cover;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            color: white;
+        }
+
+        .auth-content {
+            padding: 40px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--light-gray);
+            margin-bottom: 30px;
+        }
+
+        .auth-tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .auth-tab.active {
+            color: var(--primary);
+        }
+
+        .auth-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 0.25rem rgba(78, 84, 200, 0.25);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .social-login {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .social-login::before,
+        .social-login::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: var(--light-gray);
+        }
+
+        .social-login::before {
+            left: 0;
+        }
+
+        .social-login::after {
+            right: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-google {
+            background: #DB4437;
+        }
+
+        .btn-facebook {
+            background: #4267B2;
+        }
+
+        .btn-twitter {
+            background: #1DA1F2;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--gray);
+        }
+
+        .auth-footer a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list i {
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--gray);
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        @media (max-width: 992px) {
+            .auth-image {
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .auth-container {
+                padding: 20px 0;
+            }
+            
+            .auth-content {
+                padding: 30px 20px;
+            }
+            
+            .auth-tabs {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="sticky-top bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg py-3">
+            <div class="container">
+                <a class="navbar-brand logo d-flex align-items-center" href="../index.html">
+                    <i class="fas fa-paw me-2"></i>
+                    <h1>PawFect</h1>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-concierge-bell me-1"></i> Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-users me-1"></i> Providers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-map-marker-alt me-1"></i> Nearby</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-question-circle me-1"></i> Help</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-primary" onclick="showLogin()"><i class="fas fa-sign-in-alt me-1"></i> Log In</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Authentication Section -->
+    <section class="auth-container">
+        <div class="container">
+            <div class="auth-card">
+                <div class="row g-0">
+                    <div class="col-lg-6 d-none d-lg-block">
+                        <div class="auth-image">
+                            <div class="text-center">
+                                <h2 class="mb-4">Join Our Pet Lovers Community</h2>
+                                <p>Connect with thousands of pet owners and professional caregivers</p>
+                                
+                                <ul class="feature-list">
+                                    <li>
+                                        <i class="fas fa-check"></i> Find trusted pet care providers
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check"></i> Discover nearby pet services
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check"></i> Get exclusive offers and discounts
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check"></i> Join pet lover events in your area
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="auth-content">
+                            <div class="auth-tabs">
+                                <div class="auth-tab active" id="login-tab" onclick="showLogin()">Login</div>
+                                <div class="auth-tab" id="signup-tab" onclick="showSignup()">Sign Up</div>
+                            </div>
+                            
+                            <!-- Login Form -->
+                            <div id="login-form">
+                                <h3 class="mb-4">Welcome Back!</h3>
+                                <p class="text-muted mb-4">Please enter your credentials to access your account.</p>
+                                
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="login-email" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="login-email" placeholder="name@example.com">
+                                    </div>
+                                    
+                                    <div class="mb-3 position-relative">
+                                        <label for="login-password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="login-password" placeholder="Enter your password">
+                                        <span class="password-toggle" onclick="togglePassword('login-password')">
+                                            <i class="fas fa-eye"></i>
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="remember-forgot">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="remember-me">
+                                            <label class="form-check-label" for="remember-me">Remember me</label>
+                                        </div>
+                                        <a href="#" class="text-primary">Forgot password?</a>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary w-100 mb-3">Log In</button>
+                                    
+                                    <div class="social-login">
+                                        <span class="text-muted">Or log in with</span>
+                                        <div class="social-buttons">
+                                            <a href="#" class="social-btn btn-google">
+                                                <i class="fab fa-google"></i>
+                                            </a>
+                                            <a href="#" class="social-btn btn-facebook">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                            <a href="#" class="social-btn btn-twitter">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="auth-footer">
+                                        Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Signup Form -->
+                            <div id="signup-form" style="display: none;">
+                                <h3 class="mb-4">Create Your Account</h3>
+                                <p class="text-muted mb-4">Join our community of pet lovers today.</p>
+                                
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="first-name" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="first-name" placeholder="John">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="last-name" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="last-name" placeholder="Doe">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="signup-email" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="signup-email" placeholder="name@example.com">
+                                    </div>
+                                    
+                                    <div class="mb-3 position-relative">
+                                        <label for="signup-password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="signup-password" placeholder="Create a password">
+                                        <span class="password-toggle" onclick="togglePassword('signup-password')">
+                                            <i class="fas fa-eye"></i>
+                                        </span>
+                                        <div class="form-text">Must be at least 8 characters</div>
+                                    </div>
+                                    
+                                    <div class="mb-3 position-relative">
+                                        <label for="confirm-password" class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password">
+                                        <span class="password-toggle" onclick="togglePassword('confirm-password')">
+                                            <i class="fas fa-eye"></i>
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="terms">
+                                            <label class="form-check-label" for="terms">
+                                                I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary w-100 mb-3">Create Account</button>
+                                    
+                                    <div class="social-login">
+                                        <span class="text-muted">Or sign up with</span>
+                                        <div class="social-buttons">
+                                            <a href="#" class="social-btn btn-google">
+                                                <i class="fab fa-google"></i>
+                                            </a>
+                                            <a href="#" class="social-btn btn-facebook">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                            <a href="#" class="social-btn btn-twitter">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="auth-footer">
+                                        Already have an account? <a href="#" onclick="showLogin()">Log In</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-auto">
+        <div class="container">
+            <div class="copyright">
+                &copy; 2023 PetCare Connect. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Toggle between login and signup forms
+        function showLogin() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-tab').classList.add('active');
+            document.getElementById('signup-tab').classList.remove('active');
+        }
+        
+        function showSignup() {
+            document.getElementById('signup-form').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-tab').classList.add('active');
+            document.getElementById('login-tab').classList.remove('active');
+        }
+        
+        // Toggle password visibility
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const toggleIcon = passwordField.nextElementSibling.querySelector('i');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+        
+        // Form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.querySelector('#login-form form');
+            const signupForm = document.querySelector('#signup-form form');
+            
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('login-email').value;
+                    const password = document.getElementById('login-password').value;
+                    
+                    if (!email || !password) {
+                        alert('Please fill in all fields');
+                        return;
+                    }
+                    
+                    // In a real app, you would send this to your backend
+                    alert('Login successful! Redirecting to your dashboard...');
+                    // window.location.href = 'dashboard.html';
+                });
+            }
+            
+            if (signupForm) {
+                signupForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const firstName = document.getElementById('first-name').value;
+                    const lastName = document.getElementById('last-name').value;
+                    const email = document.getElementById('signup-email').value;
+                    const password = document.getElementById('signup-password').value;
+                    const confirmPassword = document.getElementById('confirm-password').value;
+                    const terms = document.getElementById('terms').checked;
+                    
+                    // Simple validation
+                    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+                        alert('Please fill in all fields');
+                        return;
+                    }
+                    
+                    if (password !== confirmPassword) {
+                        alert('Passwords do not match');
+                        return;
+                    }
+                    
+                    if (password.length < 8) {
+                        alert('Password must be at least 8 characters');
+                        return;
+                    }
+                    
+                    if (!terms) {
+                        alert('You must agree to the terms and conditions');
+                        return;
+                    }
+                    
+                    // In a real app, you would send this to your backend
+                    alert('Account created successfully! Welcome to PetCare Connect.');
+                    // window.location.href = 'dashboard.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,925 +1,235 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PawfectHeaven | A Holistic Community for Pet Lovers and Pet Adoption</title>
+    <title>PetCare Connect | Home for Pet Lovers</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #4e54c8;
-            --primary-light: #8f94fb;
-            --secondary: #ff7e5f;
-            --accent: #43cea2;
-            --dark: #2c3e50;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-            --light-gray: #e9ecef;
-            --border-radius: 12px;
-            --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s ease;
-        }
+    <link rel="stylesheet" href="css/index.css">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo i {
-            font-size: 28px;
-            color: var(--primary);
-        }
-
-        .logo h1 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            font-size: 16px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            font-size: 14px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(to right, var(--primary), var(--primary-light));
-            color: white;
-        }
-
-        .btn-secondary {
-            background: white;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .user-profile {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 0 50px;
-            display: flex;
-            align-items: center;
-            min-height: 80vh;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(143, 148, 251, 0.1), rgba(78, 84, 200, 0.2));
-            z-index: -1;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -200px;
-            left: -100px;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(255, 126, 95, 0.1), rgba(67, 206, 162, 0.2));
-            z-index: -1;
-        }
-
-        .hero-content {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .hero h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero h2 span {
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--gray);
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-            position: relative;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 16px;
-            color: var(--gray);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            
-            background: white;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-            border: 1px solid var(--light-gray);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 30px;
-        }
-
-        .service-card h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-
-        /* Providers Section */
-        .providers {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f5f9ff 0%, #f0f7ff 100%);
-        }
-
-        .providers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .provider-card {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .provider-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .provider-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .provider-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--accent);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .provider-info {
-            padding: 20px;
-        }
-
-        .provider-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .provider-name {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        .provider-rating {
-            color: #ffc107;
-            font-weight: 600;
-        }
-
-        .provider-details {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-
-        .provider-price {
-            font-weight: 600;
-            color: var(--primary);
-            font-size: 18px;
-        }
-
-        .provider-actions {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        /* Nearby Section */
-        .nearby {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .tab {
-            padding: 10px 20px;
-            background: var(--light-gray);
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .tab.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .nearby-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .place-card {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--light-gray);
-        }
-
-        .place-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .place-image {
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .place-info {
-            padding: 20px;
-        }
-
-        .place-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .place-name {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        .place-type {
-            background: rgba(67, 206, 162, 0.15);
-            color: #2a9d8f;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .place-details {
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-
-        .place-distance {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: var(--gray);
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f5f9ff 0%, #f0f7ff 100%);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 80px;
-            font-family: Georgia, serif;
-            color: var(--light-gray);
-            line-height: 1;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .author-info h4 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-        }
-
-        .author-info p {
-            color: var(--gray);
-            font-size: 14px;
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            text-align: center;
-        }
-
-        .cta h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .btn-light {
-            background: white;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .btn-outline-light {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 70px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 18px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #adb5bd;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #adb5bd;
-            font-size: 14px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 60px 0;
-            }
-            
-            .hero-content {
-                margin-bottom: 50px;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .hero-stats {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .hero h2 {
-                font-size: 36px;
-            }
-            
-            .hero-stats {
-                flex-wrap: wrap;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <i class="fas fa-paw"></i>
-                <h1>Pawfect Heaven</h1>
+    <header class="sticky-top bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg py-3">
+            <div class="container">
+                <a class="navbar-brand logo d-flex align-items-center" href="index.html">
+                    <i class="fas fa-paw me-2"></i>
+                    <h1>PawFect</h1>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-concierge-bell me-1"></i> Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-users me-1"></i> Providers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-map-marker-alt me-1"></i> Nearby</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-question-circle me-1"></i> Help</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="d-flex gap-3">
+                      <a href="pages/login.html"><button class="btn btn-secondary"><i class="fas fa-sign-in-alt me-1"></i>Log In</button></a>  
+                        <a href="pages/regester.html"><button class="btn btn-primary"><i class="fas fa-user-plus me-1"></i> Sign Up</button></a>
+                    </div>
+                </div>
             </div>
-            
-            <nav class="nav-links">
-                <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
-                <a href="#"><i class="fas fa-concierge-bell"></i> Services</a>
-                <a href="#"><i class="fas fa-users"></i> Providers</a>
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Nearby</a>
-                <a href="#"><i class="fas fa-question-circle"></i> Help</a>
-            </nav>
-            
-            <div class="header-actions">
-                <button class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i> Log In</button>
-                <button class="btn btn-primary"><i class="fas fa-user-plus"></i> Sign Up</button>
-            </div>
-        </div>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container" style="display: flex; align-items: center;">
-            <div class="hero-content">
-                <h2>Your Pet's <span>Happiness</span> is Our Priority</h2>
-                <p>Find trusted pet care providers, discover nearby pet services, and connect with a community of pet lovers who understand your furry family members.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary"><i class="fas fa-search"></i> Find Services</button>
-                    <button class="btn btn-secondary"><i class="fas fa-paw"></i> Become a Provider</button>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2>Your Pet's <span>Happiness</span> is Our Priority</h2>
+                    <p>Find trusted pet care providers, discover nearby pet services, and connect with a community of pet lovers who understand your furry family members.</p>
+                    <div class="d-flex gap-3 mb-5">
+                        <button class="btn btn-primary"><i class="fas fa-search me-1"></i> Find Services</button>
+                        <button class="btn btn-secondary"><i class="fas fa-paw me-1"></i> Become a Provider</button>
+                    </div>
+                    <div class="row hero-stats">
+                        <div class="col-md-4 stat-item text-center">
+                            <div class="stat-value">5,000+</div>
+                            <div class="stat-label">Happy Pets</div>
+                        </div>
+                        <div class="col-md-4 stat-item text-center">
+                            <div class="stat-value">1,200+</div>
+                            <div class="stat-label">Trusted Providers</div>
+                        </div>
+                        <div class="col-md-4 stat-item text-center">
+                            <div class="stat-value">98%</div>
+                            <div class="stat-label">Satisfaction Rate</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">5,000+</div>
-                        <div class="stat-label">Happy Pets</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">1,200+</div>
-                        <div class="stat-label">Trusted Providers</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">98%</div>
-                        <div class="stat-label">Satisfaction Rate</div>
-                    </div>
+                <div class="col-lg-6 text-center text-lg-end">
+                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600" alt="Happy dog with owner" class="img-fluid rounded shadow">
                 </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600" alt="Happy dog with owner">
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services">
-        <div class="container">
+    <section class="py-5 bg-white">
+        <div class="container py-5">
             <div class="section-header">
                 <h2 class="section-title">Our Pet Services</h2>
                 <p class="section-subtitle">From daily walks to specialized care, we connect you with professionals who love pets as much as you do.</p>
             </div>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-walking"></i>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <h3>Dog Walking</h3>
+                        <p>Daily exercise for your furry friend with trusted walkers in your neighborhood.</p>
+                        <button class="btn btn-outline">Find Walkers</button>
                     </div>
-                    <h3>Dog Walking</h3>
-                    <p>Daily exercise for your furry friend with trusted walkers in your neighborhood.</p>
-                    <button class="btn btn-outline">Find Walkers</button>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-home"></i>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Pet Sitting</h3>
+                        <p>In-home care while you're away, keeping your pets comfortable in their own environment.</p>
+                        <button class="btn btn-outline">Find Sitters</button>
                     </div>
-                    <h3>Pet Sitting</h3>
-                    <p>In-home care while you're away, keeping your pets comfortable in their own environment.</p>
-                    <button class="btn btn-outline">Find Sitters</button>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bath"></i>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-bath"></i>
+                        </div>
+                        <h3>Grooming</h3>
+                        <p>Professional grooming services to keep your pet looking and feeling their best.</p>
+                        <button class="btn btn-outline">Find Groomers</button>
                     </div>
-                    <h3>Grooming</h3>
-                    <p>Professional grooming services to keep your pet looking and feeling their best.</p>
-                    <button class="btn btn-outline">Find Groomers</button>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Training</h3>
+                        <p>Expert trainers to help with obedience, behavior, and special skills.</p>
+                        <button class="btn btn-outline">Find Trainers</button>
                     </div>
-                    <h3>Training</h3>
-                    <p>Expert trainers to help with obedience, behavior, and special skills.</p>
-                    <button class="btn btn-outline">Find Trainers</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Providers Section -->
-    <section class="providers">
-        <div class="container">
+    <section class="py-5" style="background: linear-gradient(135deg, #f5f9ff 0%, #f0f7ff 100%);">
+        <div class="container py-5">
             <div class="section-header">
                 <h2 class="section-title">Recommended Providers</h2>
                 <p class="section-subtitle">Top-rated pet care professionals loved by our community</p>
             </div>
             
-            <div class="providers-grid">
-                <div class="provider-card">
-                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=600') center/cover;">
-                        <div class="provider-badge">Top Rated</div>
-                    </div>
-                    <div class="provider-info">
-                        <div class="provider-header">
-                            <div class="provider-name">Sarah Johnson</div>
-                            <div class="provider-rating">
-                                <i class="fas fa-star"></i> 4.9
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="provider-card">
+                        <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=600') center/cover;">
+                            <div class="provider-badge">Top Rated</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="h5 mb-0">Sarah Johnson</div>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i> 4.9
+                                </div>
                             </div>
-                        </div>
-                        <div class="provider-details">
-                            <div class="provider-service">
-                                <i class="fas fa-walking"></i> Dog Walking
+                            <div class="d-flex justify-content-between mb-3">
+                                <div>
+                                    <i class="fas fa-walking me-1"></i> Dog Walking
+                                </div>
+                                <div class="provider-price">$25/hr</div>
                             </div>
-                            <div class="provider-price">$25/hr</div>
-                        </div>
-                        <p>Experienced walker with 5+ years working with all breeds.</p>
-                        <div class="provider-actions">
-                            <button class="btn btn-outline"><i class="fas fa-user"></i> Profile</button>
-                            <button class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Now</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="provider-card">
-                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1601758174810-85e9455dc9da?auto=format&fit=crop&w=600') center/cover;">
-                        <div class="provider-badge">New</div>
-                    </div>
-                    <div class="provider-info">
-                        <div class="provider-header">
-                            <div class="provider-name">Mike Thompson</div>
-                            <div class="provider-rating">
-                                <i class="fas fa-star"></i> 4.8
+                            <p class="mb-4">Experienced walker with 5+ years working with all breeds.</p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline flex-grow-1"><i class="fas fa-user me-1"></i> Profile</button>
+                                <button class="btn btn-primary flex-grow-1"><i class="fas fa-calendar-check me-1"></i> Book Now</button>
                             </div>
-                        </div>
-                        <div class="provider-details">
-                            <div class="provider-service">
-                                <i class="fas fa-home"></i> Pet Sitting
-                            </div>
-                            <div class="provider-price">$35/night</div>
-                        </div>
-                        <p>Specializes in overnight care for cats and small dogs.</p>
-                        <div class="provider-actions">
-                            <button class="btn btn-outline"><i class="fas fa-user"></i> Profile</button>
-                            <button class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Now</button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="provider-card">
-                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=600') center/cover;">
-                        <div class="provider-badge">Popular</div>
+                <div class="col-md-4">
+                    <div class="provider-card">
+                        <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1601758174810-85e9455dc9da?auto=format&fit=crop&w=600') center/cover;">
+                            <div class="provider-badge">New</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="h5 mb-0">Mike Thompson</div>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i> 4.8
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <div>
+                                    <i class="fas fa-home me-1"></i> Pet Sitting
+                                </div>
+                                <div class="provider-price">$35/night</div>
+                            </div>
+                            <p class="mb-4">Specializes in overnight care for cats and small dogs.</p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline flex-grow-1"><i class="fas fa-user me-1"></i> Profile</button>
+                                <button class="btn btn-primary flex-grow-1"><i class="fas fa-calendar-check me-1"></i> Book Now</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="provider-info">
-                        <div class="provider-header">
-                            <div class="provider-name">Emma Davis</div>
-                            <div class="provider-rating">
-                                <i class="fas fa-star"></i> 5.0
-                            </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="provider-card">
+                        <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=600') center/cover;">
+                            <div class="provider-badge">Popular</div>
                         </div>
-                        <div class="provider-details">
-                            <div class="provider-service">
-                                <i class="fas fa-bath"></i> Grooming
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="h5 mb-0">Emma Davis</div>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i> 5.0
+                                </div>
                             </div>
-                            <div class="provider-price">$45/session</div>
-                        </div>
-                        <p>Certified groomer specializing in hypoallergenic treatments.</p>
-                        <div class="provider-actions">
-                            <button class="btn btn-outline"><i class="fas fa-user"></i> Profile</button>
-                            <button class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Now</button>
+                            <div class="d-flex justify-content-between mb-3">
+                                <div>
+                                    <i class="fas fa-bath me-1"></i> Grooming
+                                </div>
+                                <div class="provider-price">$45/session</div>
+                            </div>
+                            <p class="mb-4">Certified groomer specializing in hypoallergenic treatments.</p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline flex-grow-1"><i class="fas fa-user me-1"></i> Profile</button>
+                                <button class="btn btn-primary flex-grow-1"><i class="fas fa-calendar-check me-1"></i> Book Now</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -928,14 +238,14 @@
     </section>
 
     <!-- Nearby Section -->
-    <section class="nearby">
-        <div class="container">
+    <section class="py-5 bg-white">
+        <div class="container py-5">
             <div class="section-header">
                 <h2 class="section-title">Nearby Pet Resources</h2>
                 <p class="section-subtitle">Find essential pet services near your location</p>
             </div>
             
-            <div class="tabs">
+            <div class="d-flex flex-wrap justify-content-center mb-5">
                 <div class="tab active">All</div>
                 <div class="tab">Veterinarians</div>
                 <div class="tab">Pet Stores</div>
@@ -943,55 +253,55 @@
                 <div class="tab">Grooming</div>
             </div>
             
-            <div class="nearby-grid">
-                <div class="place-card">
-                    <div class="place-image" style="background: url('https://images.unsplash.com/photo-1583339793403-3b313a4a0a6a?auto=format&fit=crop&w=600') center/cover;"></div>
-                    <div class="place-info">
-                        <div class="place-header">
-                            <div class="place-name">Happy Paws Vet Clinic</div>
-                            <div class="place-type">Veterinarian</div>
-                        </div>
-                        <div class="place-details">
-                            <p>Comprehensive pet healthcare with emergency services</p>
-                            <div class="place-distance">
-                                <i class="fas fa-map-marker-alt"></i> 1.2 miles away
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="place-card">
+                        <div class="place-image" style="background: url('https://images.unsplash.com/photo-1583339793403-3b313a4a0a6a?auto=format&fit=crop&w=600') center/cover;"></div>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="h5 mb-0">Happy Paws Vet Clinic</div>
+                                <div class="place-type">Veterinarian</div>
                             </div>
+                            <p class="mb-2">Comprehensive pet healthcare with emergency services</p>
+                            <div class="d-flex align-items-center text-muted mb-3">
+                                <i class="fas fa-map-marker-alt me-2"></i> 1.2 miles away
+                            </div>
+                            <button class="btn btn-outline w-100">View Details</button>
                         </div>
-                        <button class="btn btn-outline">View Details</button>
                     </div>
                 </div>
                 
-                <div class="place-card">
-                    <div class="place-image" style="background: url('https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600') center/cover;"></div>
-                    <div class="place-info">
-                        <div class="place-header">
-                            <div class="place-name">Pet Paradise Store</div>
-                            <div class="place-type">Pet Store</div>
-                        </div>
-                        <div class="place-details">
-                            <p>Premium pet food, toys, and accessories</p>
-                            <div class="place-distance">
-                                <i class="fas fa-map-marker-alt"></i> 0.8 miles away
+                <div class="col-md-4">
+                    <div class="place-card">
+                        <div class="place-image" style="background: url('https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600') center/cover;"></div>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="h5 mb-0">Pet Paradise Store</div>
+                                <div class="place-type">Pet Store</div>
                             </div>
+                            <p class="mb-2">Premium pet food, toys, and accessories</p>
+                            <div class="d-flex align-items-center text-muted mb-3">
+                                <i class="fas fa-map-marker-alt me-2"></i> 0.8 miles away
+                            </div>
+                            <button class="btn btn-outline w-100">View Details</button>
                         </div>
-                        <button class="btn btn-outline">View Details</button>
                     </div>
                 </div>
                 
-                <div class="place-card">
-                    <div class="place-image" style="background: url('https://images.unsplash.com/photo-1551334787-21e6bd3ab135?auto=format&fit=crop&w=600') center/cover;"></div>
-                    <div class="place-info">
-                        <div class="place-header">
-                            <div class="place-name">Central Bark Park</div>
-                            <div class="place-type">Dog Park</div>
-                        </div>
-                        <div class="place-details">
-                            <p>Fully fenced off-leash area with separate sections</p>
-                            <div class="place-distance">
-                                <i class="fas fa-map-marker-alt"></i> 2.3 miles away
+                <div class="col-md-4">
+                    <div class="place-card">
+                        <div class="place-image" style="background: url('https://images.unsplash.com/photo-1551334787-21e6bd3ab135?auto=format&fit=crop&w=600') center/cover;"></div>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="h5 mb-0">Central Bark Park</div>
+                                <div class="place-type">Dog Park</div>
                             </div>
+                            <p class="mb-2">Fully fenced off-leash area with separate sections</p>
+                            <div class="d-flex align-items-center text-muted mb-3">
+                                <i class="fas fa-map-marker-alt me-2"></i> 2.3 miles away
+                            </div>
+                            <button class="btn btn-outline w-100">View Details</button>
                         </div>
-                        <button class="btn btn-outline">View Details</button>
                     </div>
                 </div>
             </div>
@@ -999,43 +309,49 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
+    <section class="py-5" style="background: linear-gradient(135deg, #f5f9ff 0%, #f0f7ff 100%);">
+        <div class="container py-5">
             <div class="section-header">
                 <h2 class="section-title">Pet Parents Love Us</h2>
                 <p class="section-subtitle">Hear what our community has to say about their experiences</p>
             </div>
             
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Finding a reliable dog walker was always a challenge until I discovered PetCare Connect. Sarah has been walking Max for 6 months now and he absolutely adores her!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100') center/cover;"></div>
-                        <div class="author-info">
-                            <h4>Jennifer Martinez</h4>
-                            <p>Dog Mom to Max</p>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Finding a reliable dog walker was always a challenge until I discovered PetCare Connect. Sarah has been walking Max for 6 months now and he absolutely adores her!"</p>
+                        <div class="d-flex align-items-center">
+                            <div class="author-avatar" style="background: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100') center/cover;"></div>
+                            <div class="ms-3">
+                                <h4 class="mb-0">Jennifer Martinez</h4>
+                                <p class="text-muted mb-0">Dog Mom to Max</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"As a frequent traveler, I needed someone trustworthy to care for my cats. Mike from PetCare Connect sends daily updates and photos, giving me peace of mind."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100') center/cover;"></div>
-                        <div class="author-info">
-                            <h4>David Chen</h4>
-                            <p>Cat Dad to Luna & Milo</p>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"As a frequent traveler, I needed someone trustworthy to care for my cats. Mike from PetCare Connect sends daily updates and photos, giving me peace of mind."</p>
+                        <div class="d-flex align-items-center">
+                            <div class="author-avatar" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100') center/cover;"></div>
+                            <div class="ms-3">
+                                <h4 class="mb-0">David Chen</h4>
+                                <p class="text-muted mb-0">Cat Dad to Luna & Milo</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Emma transformed my anxious rescue dog during grooming sessions. Her patience and expertise made all the difference. Couldn't recommend her more!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100') center/cover;"></div>
-                        <div class="author-info">
-                            <h4>Sophia Williams</h4>
-                            <p>Dog Mom to Charlie</p>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Emma transformed my anxious rescue dog during grooming sessions. Her patience and expertise made all the difference. Couldn't recommend her more!"</p>
+                        <div class="d-flex align-items-center">
+                            <div class="author-avatar" style="background: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100') center/cover;"></div>
+                            <div class="ms-3">
+                                <h4 class="mb-0">Sophia Williams</h4>
+                                <p class="text-muted mb-0">Dog Mom to Charlie</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1048,9 +364,9 @@
         <div class="container">
             <h2>Ready to Experience Better Pet Care?</h2>
             <p>Join thousands of pet parents and professional caregivers in our community</p>
-            <div class="cta-buttons">
-                <button class="btn btn-light"><i class="fas fa-download"></i> Get the App</button>
-                <button class="btn btn-outline-light"><i class="fas fa-globe"></i> Browse Services</button>
+            <div class="d-flex gap-3 justify-content-center">
+                <button class="btn btn-light"><i class="fas fa-download me-1"></i> Get the App</button>
+                <button class="btn btn-outline-light"><i class="fas fa-globe me-1"></i> Browse Services</button>
             </div>
         </div>
     </section>
@@ -1058,10 +374,10 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
+            <div class="row g-5 mb-5">
+                <div class="col-lg-3">
                     <h3>PetCare Connect</h3>
-                    <p style="color: #adb5bd; margin-bottom: 20px;">Connecting pet owners with trusted care providers for all pet service needs.</p>
+                    <p class="text-light mb-4">Connecting pet owners with trusted care providers for all pet service needs.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1070,9 +386,9 @@
                     </div>
                 </div>
                 
-                <div class="footer-column">
+                <div class="col-lg-3">
                     <h3>Quick Links</h3>
-                    <ul class="footer-links">
+                    <ul class="footer-links list-unstyled">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Services</a></li>
                         <li><a href="#">Providers</a></li>
@@ -1081,9 +397,9 @@
                     </ul>
                 </div>
                 
-                <div class="footer-column">
+                <div class="col-lg-3">
                     <h3>Services</h3>
-                    <ul class="footer-links">
+                    <ul class="footer-links list-unstyled">
                         <li><a href="#">Dog Walking</a></li>
                         <li><a href="#">Pet Sitting</a></li>
                         <li><a href="#">Pet Boarding</a></li>
@@ -1092,9 +408,9 @@
                     </ul>
                 </div>
                 
-                <div class="footer-column">
+                <div class="col-lg-3">
                     <h3>Support</h3>
-                    <ul class="footer-links">
+                    <ul class="footer-links list-unstyled">
                         <li><a href="#">Help Center</a></li>
                         <li><a href="#">FAQs</a></li>
                         <li><a href="#">Contact Us</a></li>
@@ -1110,6 +426,9 @@
         </div>
     </footer>
 
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
         // Tab functionality for nearby section
         document.addEventListener('DOMContentLoaded', function() {
