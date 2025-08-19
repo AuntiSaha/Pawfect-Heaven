@@ -30,10 +30,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> Home</a>
+                            <a class="nav-link active" href="pages/home.html"><i class="fas fa-home me-1"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-concierge-bell me-1"></i> Services</a>
+                            <a class="nav-link" href="pages/services.html"><i class="fas fa-concierge-bell me-1"></i> Services</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fas fa-users me-1"></i> Providers</a>
@@ -104,7 +104,7 @@
                         </div>
                         <h3>Dog Walking</h3>
                         <p>Daily exercise for your furry friend with trusted walkers in your neighborhood.</p>
-                        <button class="btn btn-outline">Find Walkers</button>
+                        <a href="pages/login.html" class="btn btn-outline">Find Walkers</a>
                     </div>
                 </div>
                 
@@ -115,7 +115,7 @@
                         </div>
                         <h3>Pet Sitting</h3>
                         <p>In-home care while you're away, keeping your pets comfortable in their own environment.</p>
-                        <button class="btn btn-outline">Find Sitters</button>
+                        <a href="pages/login.html" class="btn btn-outline">Find Sitters</a>
                     </div>
                 </div>
                 
@@ -126,7 +126,7 @@
                         </div>
                         <h3>Grooming</h3>
                         <p>Professional grooming services to keep your pet looking and feeling their best.</p>
-                        <button class="btn btn-outline">Find Groomers</button>
+                        <a href="pages/login.html" class="btn btn-outline">Find Groomers</a>
                     </div>
                 </div>
                 
@@ -137,7 +137,7 @@
                         </div>
                         <h3>Training</h3>
                         <p>Expert trainers to help with obedience, behavior, and special skills.</p>
-                        <button class="btn btn-outline">Find Trainers</button>
+                       <a href="pages/login.html" class="btn btn-outline"> Find Trainerss</a>
                     </div>
                 </div>
             </div>
@@ -145,97 +145,218 @@
     </section>
 
     <!-- Providers Section -->
-    <section class="py-5" style="background: linear-gradient(135deg, #f5f9ff 0%, #f0f7ff 100%);">
+
         <div class="container py-5">
             <div class="section-header">
-                <h2 class="section-title">Recommended Providers</h2>
-                <p class="section-subtitle">Top-rated pet care professionals loved by our community</p>
+                <h2 class="section-title">Recommended Pet Care Providers</h2>
+                <p class="section-subtitle">Top-rated professionals loved by our community of pet parents</p>
             </div>
             
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="provider-card">
-                        <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=600') center/cover;">
-                            <div class="provider-badge">Top Rated</div>
+            <div class="tabs-container">
+                <div class="tabs">
+                    <div class="tab active" data-category="walking">
+                        <i class="fas fa-walking"></i> Dog Walking
+                    </div>
+                    <div class="tab" data-category="sitting">
+                        <i class="fas fa-home"></i> Pet Sitting
+                    </div>
+                    <div class="tab" data-category="grooming">
+                        <i class="fas fa-bath"></i> Grooming
+                    </div>
+                    <div class="tab" data-category="training">
+                        <i class="fas fa-graduation-cap"></i> Training
+                    </div>
+                </div>
+            </div>
+            
+            <div class="providers-grid">
+                <!-- Provider 1 - Dog Walking -->
+                <div class="provider-card" data-category="walking">
+                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=600') center/cover;">
+                        <div class="provider-badge">Top Rated</div>
+                    </div>
+                    <div class="provider-info">
+                        <div class="provider-header">
+                            <div class="provider-name">Sarah Johnson</div>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i> 4.9
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div class="h5 mb-0">Sarah Johnson</div>
-                                <div class="text-warning">
-                                    <i class="fas fa-star"></i> 4.9
-                                </div>
+                        <div class="provider-service">
+                            <div class="service-icon">
+                                <i class="fas fa-walking"></i>
                             </div>
-                            <div class="d-flex justify-content-between mb-3">
-                                <div>
-                                    <i class="fas fa-walking me-1"></i> Dog Walking
-                                </div>
-                                <div class="provider-price">$25/hr</div>
-                            </div>
-                            <p class="mb-4">Experienced walker with 5+ years working with all breeds.</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-outline flex-grow-1"><i class="fas fa-user me-1"></i> Profile</button>
-                                <button class="btn btn-primary flex-grow-1"><i class="fas fa-calendar-check me-1"></i> Book Now</button>
-                            </div>
+                            Dog Walking Specialist
+                        </div>
+                        <div class="provider-price">$25/hour</div>
+                        <p class="provider-description">Experienced walker with 5+ years working with all breeds. Provides customized walks based on your dog's needs.</p>
+                        <div class="provider-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-calendar-check"></i> Book Now
+                            </button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-md-4">
-                    <div class="provider-card">
-                        <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1601758174810-85e9455dc9da?auto=format&fit=crop&w=600') center/cover;">
-                            <div class="provider-badge">New</div>
+                <!-- Provider 2 - Pet Sitting -->
+                <div class="provider-card" data-category="sitting">
+                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1601758174810-85e9455dc9da?auto=format&fit=crop&w=600') center/cover;">
+                        <div class="provider-badge">New</div>
+                    </div>
+                    <div class="provider-info">
+                        <div class="provider-header">
+                            <div class="provider-name">Mike Thompson</div>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i> 4.8
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div class="h5 mb-0">Mike Thompson</div>
-                                <div class="text-warning">
-                                    <i class="fas fa-star"></i> 4.8
-                                </div>
+                        <div class="provider-service">
+                            <div class="service-icon">
+                                <i class="fas fa-home"></i>
                             </div>
-                            <div class="d-flex justify-content-between mb-3">
-                                <div>
-                                    <i class="fas fa-home me-1"></i> Pet Sitting
-                                </div>
-                                <div class="provider-price">$35/night</div>
-                            </div>
-                            <p class="mb-4">Specializes in overnight care for cats and small dogs.</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-outline flex-grow-1"><i class="fas fa-user me-1"></i> Profile</button>
-                                <button class="btn btn-primary flex-grow-1"><i class="fas fa-calendar-check me-1"></i> Book Now</button>
-                            </div>
+                            Pet Sitting Expert
+                        </div>
+                        <div class="provider-price">$35/night</div>
+                        <p class="provider-description">Specializes in overnight care for cats and small dogs. Provides daily updates and photos during your absence.</p>
+                        <div class="provider-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-calendar-check"></i> Book Now
+                            </button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-md-4">
-                    <div class="provider-card">
-                        <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=600') center/cover;">
-                            <div class="provider-badge">Popular</div>
+                <!-- Provider 3 - Grooming -->
+                <div class="provider-card" data-category="grooming">
+                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=600') center/cover;">
+                        <div class="provider-badge">Popular</div>
+                    </div>
+                    <div class="provider-info">
+                        <div class="provider-header">
+                            <div class="provider-name">Emma Davis</div>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i> 5.0
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div class="h5 mb-0">Emma Davis</div>
-                                <div class="text-warning">
-                                    <i class="fas fa-star"></i> 5.0
-                                </div>
+                        <div class="provider-service">
+                            <div class="service-icon">
+                                <i class="fas fa-bath"></i>
                             </div>
-                            <div class="d-flex justify-content-between mb-3">
-                                <div>
-                                    <i class="fas fa-bath me-1"></i> Grooming
-                                </div>
-                                <div class="provider-price">$45/session</div>
+                            Certified Pet Groomer
+                        </div>
+                        <div class="provider-price">$45/session</div>
+                        <p class="provider-description">Certified groomer specializing in hypoallergenic treatments. Gentle approach for anxious pets.</p>
+                        <div class="provider-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-calendar-check"></i> Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Provider 4 - Training -->
+                <div class="provider-card" data-category="training">
+                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600') center/cover;">
+                        <div class="provider-badge">Expert</div>
+                    </div>
+                    <div class="provider-info">
+                        <div class="provider-header">
+                            <div class="provider-name">Thomas Anderson</div>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i> 4.9
                             </div>
-                            <p class="mb-4">Certified groomer specializing in hypoallergenic treatments.</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-outline flex-grow-1"><i class="fas fa-user me-1"></i> Profile</button>
-                                <button class="btn btn-primary flex-grow-1"><i class="fas fa-calendar-check me-1"></i> Book Now</button>
+                        </div>
+                        <div class="provider-service">
+                            <div class="service-icon">
+                                <i class="fas fa-graduation-cap"></i>
                             </div>
+                            Professional Trainer
+                        </div>
+                        <div class="provider-price">$60/hour</div>
+                        <p class="provider-description">Certified dog trainer with 10+ years experience. Specializes in behavior modification and obedience.</p>
+                        <div class="provider-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-calendar-check"></i> Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Provider 5 - Dog Walking -->
+                <div class="provider-card" data-category="walking">
+                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1553284965-83fd9e1cb0fc?auto=format&fit=crop&w=600') center/cover;">
+                        <div class="provider-badge">Available</div>
+                    </div>
+                    <div class="provider-info">
+                        <div class="provider-header">
+                            <div class="provider-name">Alex Rodriguez</div>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i> 4.7
+                            </div>
+                        </div>
+                        <div class="provider-service">
+                            <div class="service-icon">
+                                <i class="fas fa-walking"></i>
+                            </div>
+                            Dog Walker & Trainer
+                        </div>
+                        <div class="provider-price">$22/hour</div>
+                        <p class="provider-description">Specializes in large breed dogs and puppy training. Offers group walks and socialization sessions.</p>
+                        <div class="provider-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-calendar-check"></i> Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Provider 6 - Pet Sitting -->
+                <div class="provider-card" data-category="sitting">
+                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=600') center/cover;">
+                        <div class="provider-badge">Special Needs</div>
+                    </div>
+                    <div class="provider-info">
+                        <div class="provider-header">
+                            <div class="provider-name">Lisa Chen</div>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i> 4.9
+                            </div>
+                        </div>
+                        <div class="provider-service">
+                            <div class="service-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            Pet Sitter
+                        </div>
+                        <div class="provider-price">$40/night</div>
+                        <p class="provider-description">Provides medical care for pets with special needs. Vet tech experience with medication administration.</p>
+                        <div class="provider-actions">
+                            <button class="btn btn-outline">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-calendar-check"></i> Book Now
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
     <!-- Nearby Section -->
     <section class="py-5 bg-white">
@@ -445,6 +566,49 @@
                     // In a real app, this would filter the nearby places
                     // For this demo, we'll just show a message
                     console.log(`Showing: ${this.textContent}`);
+                });
+            });
+        });
+    </script>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const providerCards = document.querySelectorAll('.provider-card');
+            
+            // Initialize with first tab active and only showing its providers
+            providerCards.forEach(card => {
+                if (card.getAttribute('data-category') !== 'walking') {
+                    card.style.display = 'none';
+                }
+            });
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Get the category to show
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show/hide provider cards based on category
+                    providerCards.forEach(card => {
+                        if (card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
                 });
             });
         });

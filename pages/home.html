@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawFect - Pet Care Services</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4e54c8;
+            --primary-light: #8f94fb;
+            --secondary: #ff7e5f;
+            --accent: #43cea2;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 12px;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .logo i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .logo h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .btn {
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            border: none;
+        }
+
+        .btn-secondary {
+            background: white;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .user-profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .welcome-banner {
+            padding: 30px 0;
+            background: white;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .welcome-banner h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .welcome-banner p {
+            color: var(--gray);
+            margin-bottom: 0;
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            height: 100%;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card .icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .dashboard-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .section-header {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--gray);
+            max-width: 700px;
+        }
+
+        .providers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .provider-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+            height: 100%;
+        }
+
+        .provider-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .provider-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .provider-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .provider-info {
+            padding: 20px;
+        }
+
+        .provider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .provider-name {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .provider-rating {
+            color: #ffc107;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .provider-service {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .provider-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .provider-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .provider-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .provider-actions .btn {
+            padding: 8px 15px;
+            font-size: 14px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .service-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .tabs-container {
+            margin-bottom: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: var(--light-gray);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .tab:hover:not(.active) {
+            background: #d8d9ff;
+        }
+
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 14px;
+        }
+
+        .provider-dashboard-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* New styles for service selection and provider details */
+        .service-selection {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .provider-details {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            display: none;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .provider-details.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .booking-form {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-top: 25px;
+        }
+        
+        .availability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .time-slot {
+            padding: 10px;
+            text-align: center;
+            background: var(--light-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .time-slot.selected {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .time-slot.booked {
+            background: #ffcccc;
+            color: #990000;
+            cursor: not-allowed;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .provider-dashboard {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            display: none;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .provider-dashboard.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .service-tag {
+            display: inline-block;
+            background: rgba(78, 84, 200, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin: 0 5px 5px 0;
+            font-size: 14px;
+        }
+        
+        .location-search {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .location-search i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .location-search input {
+            padding-left: 45px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .welcome-banner h2 {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .providers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                justify-content: center;
+            }
+            
+            .provider-dashboard-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .welcome-banner h2 {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .provider-dashboard-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="sticky-top bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg py-3">
+            <div class="container">
+                <a class="navbar-brand logo d-flex align-items-center" href="home.html">
+                    <i class="fas fa-paw me-2"></i>
+                    <h1>PawFect</h1>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-concierge-bell me-1"></i> Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-users me-1"></i> Providers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-map-marker-alt me-1"></i> Nearby</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-calendar-alt me-1"></i> Bookings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="providerModeNav"><i class="fas fa-exchange-alt me-1"></i> Provider Mode</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="d-flex gap-3 align-items-center">
+                        <div class="position-relative">
+                            <i class="fas fa-bell fs-5 text-muted"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </div>
+                        <div class="user-profile">
+                            JD
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Welcome Banner -->
+    <section class="welcome-banner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2>Welcome back, John Doe!</h2>
+                    <p>Ready to find the perfect care for your furry friends?</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <button class="btn btn-primary" id="newBookingBtn">
+                        <i class="fas fa-plus me-1"></i> New Booking
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Selection -->
+    <section class="py-3" id="serviceSelectionSection" style="display: none;">
+        <div class="container">
+            <div class="service-selection">
+                <h3 class="mb-4">Select a Service</h3>
+                
+                <div class="location-search">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" class="form-control" placeholder="Enter your location (city or zip code)" id="locationInput">
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="dashboard-card text-center" data-service="walking">
+                            <div class="icon mx-auto">
+                                <i class="fas fa-walking"></i>
+                            </div>
+                            <h3>Dog Walking</h3>
+                            <p>Regular or one-time walks for your furry friend</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="dashboard-card text-center" data-service="sitting">
+                            <div class="icon mx-auto">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3>Pet Sitting</h3>
+                            <p>In-home care while you're away</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="dashboard-card text-center" data-service="grooming">
+                            <div class="icon mx-auto">
+                                <i class="fas fa-bath"></i>
+                            </div>
+                            <h3>Grooming</h3>
+                            <p>Bathing, haircuts, and nail trimming</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="py-5" id="quickActionsSection">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card">
+                        <div class="icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Find Providers</h3>
+                        <p>Discover trusted pet care professionals in your area</p>
+                        <a href="#" class="btn btn-outline mt-3">Browse Providers</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card">
+                        <div class="icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>My Bookings</h3>
+                        <p>Manage your upcoming and past appointments</p>
+                        <a href="#" class="btn btn-outline mt-3">View Bookings</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card">
+                        <div class="icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <h3>My Pets</h3>
+                        <p>Manage your pet profiles and preferences</p>
+                        <a href="#" class="btn btn-outline mt-3">View Pets</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card">
+                        <div class="icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Favorites</h3>
+                        <p>Your saved providers and services</p>
+                        <a href="#" class="btn btn-outline mt-3">View Favorites</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Providers Section -->
+    <section class="py-5 bg-light" id="providersSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Recommended Pet Care Providers</h2>
+                <p class="section-subtitle">Top-rated professionals loved by our community</p>
+            </div>
+            
+            <div class="tabs-container">
+                <div class="tabs">
+                    <div class="tab active" data-category="all">
+                        <i class="fas fa-star"></i> All Providers
+                    </div>
+                    <div class="tab" data-category="walking">
+                        <i class="fas fa-walking"></i> Dog Walking
+                    </div>
+                    <div class="tab" data-category="sitting">
+                        <i class="fas fa-home"></i> Pet Sitting
+                    </div>
+                    <div class="tab" data-category="grooming">
+                        <i class="fas fa-bath"></i> Grooming
+                    </div>
+                </div>
+            </div>
+            
+            <div class="providers-grid">
+                <!-- Provider 1 - Dog Walking -->
+                <div class="provider-card" data-category="walking" data-id="1">
+                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=600') center/cover;">
+                        <div class="provider-badge">Top Rated</div>
+                    </div>
+                    <div class="provider-info">
+                        <div class="provider-header">
+                            <div class="provider-name">Sarah Johnson</div>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i> 4.9
+                            </div>
+                        </div>
+                        <div class="provider-service">
+                            <div class="service-icon">
+                                <i class="fas fa-walking"></i>
+                            </div>
+                            Dog Walking Specialist
+                        </div>
+                        <div class="provider-price">$25/hour</div>
+                        <p class="provider-description">Experienced walker with 5+ years working with all breeds.</p>
+                        <div class="provider-actions">
+                            <button class="btn btn-outline view-details" data-id="1">
+                                <i class="fas fa-user"></i> Profile
+                            </button>
+                            <button class="btn btn-primary view-details" data-id="1">
+                                <i class="fas fa-calendar"></i> Book
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Provider 2 - Pet Sitting -->
+                <div class="provider-card" data-category="sitting" data-id="2">
+                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1601758174810-85e9455dc9da?auto=format&fit=crop&w=600') center/cover;">
+                        <div class="provider-badge">New</div>
+                    </div>
+                    <div class="provider-info">
+                        <div class="provider-header">
+                            <div class="provider-name">Mike Thompson</div>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i> 4.8
+                            </div>
+                        </div>
+                        <div class="provider-service">
+                            <div class="service-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            Pet Sitting Expert
+                        </div>
+                        <div class="provider-price">$35/night</div>
+                        <p class="provider-description">Specializes in overnight care for cats and small dogs.</p>
+                        <div class="provider-actions">
+                            <button class="btn btn-outline view-details" data-id="2">
+                                <i class="fas fa-user"></i> Profile
+                            </button>
+                            <button class="btn btn-primary view-details" data-id="2">
+                                <i class="fas fa-calendar"></i> Book
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Provider 3 - Grooming -->
+                <div class="provider-card" data-category="grooming" data-id="3">
+                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=600') center/cover;">
+                        <div class="provider-badge">Popular</div>
+                    </div>
+                    <div class="provider-info">
+                        <div class="provider-header">
+                            <div class="provider-name">Emma Davis</div>
+                            <div class="provider-rating">
+                                <i class="fas fa-star"></i> 5.0
+                            </div>
+                        </div>
+                        <div class="provider-service">
+                            <div class="service-icon">
+                                <i class="fas fa-bath"></i>
+                            </div>
+                            Certified Pet Groomer
+                        </div>
+                        <div class="provider-price">$45/session</div>
+                        <p class="provider-description">Specializing in hypoallergenic treatments for anxious pets.</p>
+                        <div class="provider-actions">
+                            <button class="btn btn-outline view-details" data-id="3">
+                                <i class="fas fa-user"></i> Profile
+                            </button>
+                            <button class="btn btn-primary view-details" data-id="3">
+                                <i class="fas fa-calendar"></i> Book
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <button class="btn btn-outline">
+                    <i class="fas fa-search me-1"></i> View All Providers
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Provider Details Section -->
+    <section class="py-5" id="providerDetailsSection">
+        <div class="container">
+            <div class="provider-details" id="providerDetails">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Provider Dashboard -->
+    <section class="py-5" id="providerDashboardSection">
+        <div class="container">
+            <div class="provider-dashboard" id="providerDashboard">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Create Your Service Gig</h2>
+                    <button class="btn btn-outline" id="closeProviderDashboard">
+                        <i class="fas fa-times me-1"></i> Close
+                    </button>
+                </div>
+                
+                <form id="providerGigForm">
+                    <div class="mb-4">
+                        <label class="form-label">Your Location</label>
+                        <input type="text" class="form-control" placeholder="Enter your city or zip code" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label">Services You Offer</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="serviceWalking" value="walking">
+                                <label class="form-check-label" for="serviceWalking">Dog Walking</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="serviceSitting" value="sitting">
+                                <label class="form-check-label" for="serviceSitting">Pet Sitting</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="serviceGrooming" value="grooming">
+                                <label class="form-check-label" for="serviceGrooming">Grooming</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="serviceBoarding" value="boarding">
+                                <label class="form-check-label" for="serviceBoarding">Boarding</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="serviceTraining" value="training">
+                                <label class="form-check-label" for="serviceTraining">Training</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label">Service Description</label>
+                        <textarea class="form-control" rows="4" placeholder="Describe your services, experience, and approach..." required></textarea>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label">Hourly Rate</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" placeholder="0.00" min="0" step="0.01" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Availability</label>
+                            <select class="form-select" required>
+                                <option value="">Select availability</option>
+                                <option value="weekdays">Weekdays Only</option>
+                                <option value="weekends">Weekends Only</option>
+                                <option value="both">Weekdays & Weekends</option>
+                                <option value="flexible">Flexible Schedule</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label">Service Radius</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="0" min="0" required>
+                            <span class="input-group-text">miles</span>
+                        </div>
+                        <div class="form-text">How far are you willing to travel to provide services?</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label">Upload Photos</label>
+                        <input type="file" class="form-control" accept="image/*" multiple>
+                    </div>
+                    
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-1"></i> Create Service Gig
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Bookings -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Bookings</h2>
+                <p class="section-subtitle">Your scheduled pet care appointments</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="dashboard-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3>Today's Appointments</h3>
+                            <a href="#" class="btn btn-sm btn-outline">View All</a>
+                        </div>
+                        
+                        <div class="booking-item d-flex align-items-center p-3 mb-3 bg-light rounded">
+                            <div class="booking-icon me-3">
+                                <i class="fas fa-walking fs-2 text-primary"></i>
+                            </div>
+                            <div class="booking-details flex-grow-1">
+                                <h4 class="mb-1">Dog Walking - Max</h4>
+                                <p class="mb-1"><i class="fas fa-user me-2"></i> Sarah Johnson</p>
+                                <p class="mb-0"><i class="fas fa-clock me-2"></i> 3:00 PM - 4:00 PM</p>
+                            </div>
+                            <div class="booking-actions">
+                                <button class="btn btn-sm btn-outline">Details</button>
+                            </div>
+                        </div>
+                        
+                        <div class="booking-item d-flex align-items-center p-3 mb-3 bg-light rounded">
+                            <div class="booking-icon me-3">
+                                <i class="fas fa-bath fs-2 text-info"></i>
+                            </div>
+                            <div class="booking-details flex-grow-1">
+                                <h4 class="mb-1">Grooming Session - Bella</h4>
+                                <p class="mb-1"><i class="fas fa-user me-2"></i> Emma Davis</p>
+                                <p class="mb-0"><i class="fas fa-clock me-2"></i> 5:30 PM - 7:00 PM</p>
+                            </div>
+                            <div class="booking-actions">
+                                <button class="btn btn-sm btn-outline">Details</button>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <p class="text-muted">You have no more appointments today</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5 mb-5">
+                <div class="col-lg-3">
+                    <h3>PawFect</h3>
+                    <p class="text-light mb-4">Connecting pet owners with trusted care providers for all pet service needs.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Providers</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h3>Services</h3>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="#">Dog Walking</a></li>
+                        <li><a href="#">Pet Sitting</a></li>
+                        <li><a href="#">Pet Boarding</a></li>
+                        <li><a href="#">Pet Grooming</a></li>
+                        <li><a href="#">Pet Training</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h3>Support</h3>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 PawFect. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Provider Dashboard Button -->
+    <button class="btn btn-primary provider-dashboard-btn" id="providerModeBtn">
+        <i class="fas fa-exchange-alt me-1"></i> Switch to Provider Mode
+    </button>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Provider data
+        const providers = {
+            1: {
+                name: "Sarah Johnson",
+                rating: 4.9,
+                service: "Dog Walking Specialist",
+                price: "$25/hour",
+                description: "Experienced walker with 5+ years working with all breeds. I specialize in energetic dogs and provide customized walks based on your pet's needs.",
+                location: "Downtown, within 5 miles",
+                experience: "5 years professional experience",
+                pets: "All breeds and sizes welcome",
+                reviews: [
+                    {
+                        name: "Michael R.",
+                        rating: 5,
+                        date: "2 weeks ago",
+                        comment: "Sarah is amazing with my golden retriever! Always punctual and sends photo updates."
+                    },
+                    {
+                        name: "Jennifer K.",
+                        rating: 4.5,
+                        date: "1 month ago",
+                        comment: "Reliable and trustworthy. My dog gets so excited when Sarah arrives!"
+                    },
+                    {
+                        name: "David T.",
+                        rating: 5,
+                        date: "3 months ago",
+                        comment: "Professional and caring. Highly recommend her services."
+                    }
+                ],
+                availability: [
+                    "9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
+                ],
+                booked: ["11:00 AM", "3:00 PM"]
+            },
+            2: {
+                name: "Mike Thompson",
+                rating: 4.8,
+                service: "Pet Sitting Expert",
+                price: "$35/night",
+                description: "Specializes in overnight care for cats and small dogs. I provide a safe and comfortable environment for your pets while you're away.",
+                location: "Westside, within 10 miles",
+                experience: "3 years professional experience",
+                pets: "Cats and small dogs only",
+                reviews: [
+                    {
+                        name: "Sarah M.",
+                        rating: 5,
+                        date: "1 week ago",
+                        comment: "Mike took great care of my two cats while I was away. Will definitely book again!"
+                    },
+                    {
+                        name: "Robert L.",
+                        rating: 4,
+                        date: "3 weeks ago",
+                        comment: "Good service. My dog seemed happy when I returned."
+                    }
+                ],
+                availability: [
+                    "Flexible overnight stays"
+                ],
+                booked: []
+            },
+            3: {
+                name: "Emma Davis",
+                rating: 5.0,
+                service: "Certified Pet Groomer",
+                price: "$45/session",
+                description: "Specializing in hypoallergenic treatments for anxious pets. Gentle approach with nervous animals and experience with all coat types.",
+                location: "Eastside, within 7 miles",
+                experience: "7 years professional experience",
+                pets: "All sizes, specializes in anxious pets",
+                reviews: [
+                    {
+                        name: "Lisa P.",
+                        rating: 5,
+                        date: "5 days ago",
+                        comment: "Emma is a miracle worker! My anxious poodle actually enjoys grooming now."
+                    },
+                    {
+                        name: "Thomas W.",
+                        rating: 5,
+                        date: "2 weeks ago",
+                        comment: "Professional and caring. My cat looks amazing after her grooming session."
+                    },
+                    {
+                        name: "Amanda S.",
+                        rating: 5,
+                        date: "1 month ago",
+                        comment: "Best groomer we've ever had. Worth every penny!"
+                    }
+                ],
+                availability: [
+                    "9:00 AM", "10:30 AM", "12:00 PM", "2:00 PM", "3:30 PM", "5:00 PM"
+                ],
+                booked: ["10:30 AM", "3:30 PM"]
+            }
+        };
+
+        // DOM elements
+        const newBookingBtn = document.getElementById('newBookingBtn');
+        const serviceSelectionSection = document.getElementById('serviceSelectionSection');
+        const quickActionsSection = document.getElementById('quickActionsSection');
+        const providersSection = document.getElementById('providersSection');
+        const providerDetailsSection = document.getElementById('providerDetailsSection');
+        const providerDetails = document.getElementById('providerDetails');
+        const viewDetailsBtns = document.querySelectorAll('.view-details');
+        const providerModeBtn = document.getElementById('providerModeBtn');
+        const providerModeNav = document.getElementById('providerModeNav');
+        const providerDashboard = document.getElementById('providerDashboard');
+        const closeProviderDashboard = document.getElementById('closeProviderDashboard');
+        const serviceCards = document.querySelectorAll('.dashboard-card[data-service]');
+        const tabs = document.querySelectorAll('.tab');
+        const providerCards = document.querySelectorAll('.provider-card');
+        const locationInput = document.getElementById('locationInput');
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide sections initially
+            serviceSelectionSection.style.display = 'none';
+            providerDetailsSection.style.display = 'none';
+            providerDashboardSection.style.display = 'none';
+            
+            // Service selection cards
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const service = this.getAttribute('data-service');
+                    const location = locationInput.value.trim();
+                    
+                    if (!location) {
+                        alert('Please enter your location first');
+                        return;
+                    }
+                    
+                    filterProviders(service);
+                    serviceSelectionSection.style.display = 'none';
+                    providersSection.style.display = 'block';
+                });
+            });
+            
+            // View provider details
+            viewDetailsBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const providerId = this.getAttribute('data-id');
+                    showProviderDetails(providerId);
+                });
+            });
+            
+            // Tabs functionality
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    filterProviders(category);
+                });
+            });
+            
+            // New booking button
+            newBookingBtn.addEventListener('click', function() {
+                serviceSelectionSection.style.display = 'block';
+                quickActionsSection.style.display = 'none';
+                providersSection.style.display = 'none';
+                providerDetailsSection.style.display = 'none';
+            });
+            
+            // Provider mode buttons
+            providerModeBtn.addEventListener('click', function() {
+                showProviderDashboard();
+            });
+            
+            providerModeNav.addEventListener('click', function(e) {
+                e.preventDefault();
+                showProviderDashboard();
+            });
+            
+            // Close provider dashboard
+            closeProviderDashboard.addEventListener('click', function() {
+                providerDashboard.classList.remove('active');
+                setTimeout(() => {
+                    providerDashboardSection.style.display = 'none';
+                }, 500);
+            });
+        });
+
+        // Show provider dashboard
+        function showProviderDashboard() {
+            providerDashboard.classList.add('active');
+            providerDashboardSection.style.display = 'block';
+            window.scrollTo({top: providerDashboardSection.offsetTop, behavior: 'smooth'});
+        }
+
+        // Filter providers by category
+        function filterProviders(category) {
+            // Update active tab
+            tabs.forEach(tab => tab.classList.remove('active'));
+            const activeTab = document.querySelector(`.tab[data-category="${category}"]`);
+            if (activeTab) activeTab.classList.add('active');
+            
+            // Filter provider cards
+            providerCards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Show provider details
+        function showProviderDetails(providerId) {
+            const provider = providers[providerId];
+            
+            // Generate HTML for provider details
+            let servicesHTML = '';
+            let reviewsHTML = '';
+            let availabilityHTML = '';
+            
+            // Services
+            servicesHTML = `
+                <div class="mb-3">
+                    <span class="service-tag">${provider.service}</span>
+                    <span class="service-tag">${provider.location}</span>
+                    <span class="service-tag">${provider.experience}</span>
+                    <span class="service-tag">${provider.pets}</span>
+                </div>
+            `;
+            
+            // Reviews
+            provider.reviews.forEach(review => {
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    stars += `<i class="fas fa-star ${i <= review.rating ? 'text-warning' : 'text-secondary'}"></i>`;
+                }
+                
+                reviewsHTML += `
+                    <div class="review-card">
+                        <div class="d-flex justify-content-between mb-2">
+                            <h5 class="mb-0">${review.name}</h5>
+                            <div>
+                                ${stars}
+                            </div>
+                        </div>
+                        <p class="text-muted mb-2"><small>${review.date}</small></p>
+                        <p class="mb-0">${review.comment}</p>
+                    </div>
+                `;
+            });
+            
+            // Availability
+            provider.availability.forEach(slot => {
+                const isBooked = provider.booked.includes(slot);
+                availabilityHTML += `
+                    <div class="time-slot ${isBooked ? 'booked' : ''}" ${isBooked ? '' : 'data-slot="'+slot+'"'}>
+                        ${slot} ${isBooked ? '(Booked)' : ''}
+                    </div>
+                `;
+            });
+            
+            // Build the full details HTML
+            providerDetails.innerHTML = `
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>${provider.name}</h2>
+                    <button class="btn btn-outline" id="backToProviders">
+                        <i class="fas fa-arrow-left me-1"></i> Back to Providers
+                    </button>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=600') center/cover; height: 300px; border-radius: 12px;"></div>
+                        
+                        <div class="mt-4">
+                            <h4><i class="fas fa-dollar-sign me-2"></i> ${provider.price}</h4>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="provider-rating fs-4">
+                                    <i class="fas fa-star text-warning"></i> ${provider.rating}
+                                </div>
+                                <span class="ms-2">(${provider.reviews.length} reviews)</span>
+                            </div>
+                            <button class="btn btn-primary w-100" id="bookNowBtn">
+                                <i class="fas fa-calendar me-1"></i> Book Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <h3 class="mb-3">About Me</h3>
+                        <p class="mb-4">${provider.description}</p>
+                        
+                        <div class="mb-4">
+                            <h3 class="mb-3">Services Offered</h3>
+                            ${servicesHTML}
+                        </div>
+                        
+                        <div class="booking-form">
+                            <h3 class="mb-3">Book Appointment</h3>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Select Date</label>
+                                <input type="date" class="form-control" min="${new Date().toISOString().split('T')[0]}">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Select Time Slot</label>
+                                <div class="availability-grid">
+                                    ${availabilityHTML}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Pet</label>
+                                <select class="form-select">
+                                    <option>Max (Golden Retriever)</option>
+                                    <option>Bella (Siamese Cat)</option>
+                                    <option>Charlie (Labrador)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Special Instructions</label>
+                                <textarea class="form-control" rows="3" placeholder="Any special requests or information about your pet..."></textarea>
+                            </div>
+                            
+                            <button class="btn btn-primary w-100" id="confirmBookingBtn">
+                                <i class="fas fa-check-circle me-1"></i> Confirm Booking
+                            </button>
+                        </div>
+                        
+                        <div class="mt-5">
+                            <h3 class="mb-3">Customer Reviews</h3>
+                            ${reviewsHTML}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Show the details section
+            providerDetailsSection.style.display = 'block';
+            providerDetails.classList.add('active');
+            window.scrollTo({top: providerDetailsSection.offsetTop, behavior: 'smooth'});
+            
+            // Add event listeners for the new elements
+            document.getElementById('backToProviders')?.addEventListener('click', function() {
+                providerDetails.classList.remove('active');
+                setTimeout(() => {
+                    providerDetailsSection.style.display = 'none';
+                }, 500);
+            });
+            
+            document.getElementById('bookNowBtn')?.addEventListener('click', function() {
+                document.querySelector('.booking-form').scrollIntoView({behavior: 'smooth'});
+            });
+            
+            document.getElementById('confirmBookingBtn')?.addEventListener('click', function() {
+                alert('Booking confirmed! You will receive a confirmation email shortly.');
+                providerDetails.classList.remove('active');
+                setTimeout(() => {
+                    providerDetailsSection.style.display = 'none';
+                }, 500);
+            });
+            
+            // Time slot selection
+            document.querySelectorAll('.time-slot:not(.booked)').forEach(slot => {
+                slot.addEventListener('click', function() {
+                    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
