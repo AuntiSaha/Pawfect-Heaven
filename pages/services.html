@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCare Connect | Services</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4e54c8;
+            --primary-light: #8f94fb;
+            --secondary: #ff7e5f;
+            --accent: #43cea2;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 12px;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .logo i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .logo h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .btn {
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            border: none;
+        }
+
+        .btn-secondary {
+            background: white;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .user-profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Service Page Styles */
+        .service-hero {
+            background: linear-gradient(rgba(78, 84, 200, 0.9), rgba(143, 148, 251, 0.8)), 
+                        url('https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?auto=format&fit=crop&w=1350') center/cover;
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .service-hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .service-hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .service-search {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .service-search input {
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-search button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            border-radius: 50px;
+            padding: 10px 20px;
+            border: none;
+            background: var(--primary);
+            color: white;
+        }
+
+        .service-categories {
+            margin-bottom: 60px;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .category-tab {
+            padding: 12px 25px;
+            background: var(--light-gray);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .category-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .category-tab:hover:not(.active) {
+            background: #d8d9ff;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+            height: 100%;
+            margin-bottom: 30px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .service-info {
+            padding: 25px;
+        }
+
+        .service-header {
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .service-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            margin-bottom: 20px;
+        }
+
+        .service-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .service-feature i {
+            color: var(--primary);
+        }
+
+        .service-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .service-cta {
+            display: flex;
+            gap: 10px;
+        }
+
+        .service-cta .btn {
+            flex: 1;
+        }
+
+        .how-it-works {
+            background: white;
+            padding: 80px 0;
+            margin-bottom: 60px;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            margin-bottom: 60px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .step {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .step p {
+            color: var(--gray);
+        }
+
+        .faq-section {
+            margin-bottom: 60px;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(78, 84, 200, 0.05);
+            color: var(--primary);
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(78, 84, 200, 0.2);
+        }
+
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: 8px !important;
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .service-hero h1 {
+                font-size: 36px;
+            }
+            
+            .service-hero p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-hero {
+                padding: 80px 0;
+            }
+            
+            .service-hero h1 {
+                font-size: 32px;
+            }
+            
+            .category-tabs {
+                justify-content: flex-start;
+            }
+            
+            .step {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .service-hero {
+                padding: 60px 0;
+            }
+            
+            .service-hero h1 {
+                font-size: 28px;
+            }
+            
+            .service-hero p {
+                font-size: 16px;
+            }
+            
+            .service-search input {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+            
+            .service-search button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="sticky-top bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg py-3">
+            <div class="container">
+                <a class="navbar-brand logo d-flex align-items-center" href="home.html">
+                    <i class="fas fa-paw me-2"></i>
+                    <h1>PawFect</h1>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html"><i class="fas fa-home me-1"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="services.html"><i class="fas fa-concierge-bell me-1"></i> Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-users me-1"></i> Providers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-map-marker-alt me-1"></i> Nearby</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-calendar-alt me-1"></i> Bookings</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="d-flex gap-3 align-items-center">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="modeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-1"></i> User Mode
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="modeDropdown">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> User Mode</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-briefcase me-2"></i> Provider Mode</a></li>
+                            </ul>
+                        </div>
+                        <div class="position-relative">
+                            <i class="fas fa-bell fs-5 text-muted"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </div>
+                        <div class="user-profile">
+                            JD
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Service Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <h1>Comprehensive Pet Care Services</h1>
+            <p>Find the perfect care solution for your furry family members with our trusted professionals</p>
+            <div class="service-search">
+                <input type="text" placeholder="Search for services...">
+                <button class="btn"><i class="fas fa-search"></i> Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="container">
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">
+                    <i class="fas fa-star"></i> All Services
+                </button>
+                <button class="category-tab" data-category="walking">
+                    <i class="fas fa-walking"></i> Dog Walking
+                </button>
+                <button class="category-tab" data-category="sitting">
+                    <i class="fas fa-home"></i> Pet Sitting
+                </button>
+                <button class="category-tab" data-category="grooming">
+                    <i class="fas fa-bath"></i> Grooming
+                </button>
+                <button class="category-tab" data-category="boarding">
+                    <i class="fas fa-bone"></i> Boarding
+                </button>
+                <button class="category-tab" data-category="training">
+                    <i class="fas fa-graduation-cap"></i> Training
+                </button>
+            </div>
+            
+            <div class="row">
+                <!-- Service 1 - Dog Walking -->
+                <div class="col-md-6 col-lg-4" data-category="walking">
+                    <div class="service-card">
+                        <div class="service-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=600') center/cover;">
+                            <div class="service-badge">Popular</div>
+                        </div>
+                        <div class="service-info">
+                            <div class="service-header">
+                                <h3 class="service-title">Dog Walking</h3>
+                                <p class="service-description">Professional dog walking services to keep your pet active and healthy.</p>
+                            </div>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-clock"></i> 30-60 minute walks
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-map-marked-alt"></i> Custom routes
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-dog"></i> All breeds welcome
+                                </div>
+                            </div>
+                            <div class="service-price">Starting at $20/walk</div>
+                            <div class="service-cta">
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar"></i> Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 2 - Pet Sitting -->
+                <div class="col-md-6 col-lg-4" data-category="sitting">
+                    <div class="service-card">
+                        <div class="service-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1601758174810-85e9455dc9da?auto=format&fit=crop&w=600') center/cover;">
+                            <div class="service-badge">Best Value</div>
+                        </div>
+                        <div class="service-info">
+                            <div class="service-header">
+                                <h3 class="service-title">Pet Sitting</h3>
+                                <p class="service-description">In-home pet care while you're away, keeping your pet comfortable in their own environment.</p>
+                            </div>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-home"></i> At your home
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-clock"></i> 30-60 minute visits
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-utensils"></i> Feeding included
+                                </div>
+                            </div>
+                            <div class="service-price">Starting at $30/visit</div>
+                            <div class="service-cta">
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar"></i> Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3 - Grooming -->
+                <div class="col-md-6 col-lg-4" data-category="grooming">
+                    <div class="service-card">
+                        <div class="service-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=600') center/cover;">
+                            <div class="service-badge">New</div>
+                        </div>
+                        <div class="service-info">
+                            <div class="service-header">
+                                <h3 class="service-title">Professional Grooming</h3>
+                                <p class="service-description">Full-service grooming to keep your pet looking and feeling their best.</p>
+                            </div>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-bath"></i> Bath & brush
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-cut"></i> Haircut & styling
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-paw"></i> Nail trimming
+                                </div>
+                            </div>
+                            <div class="service-price">Starting at $45/session</div>
+                            <div class="service-cta">
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar"></i> Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 4 - Overnight Boarding -->
+                <div class="col-md-6 col-lg-4" data-category="boarding">
+                    <div class="service-card">
+                        <div class="service-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600') center/cover;">
+                            <div class="service-badge">Limited Availability</div>
+                        </div>
+                        <div class="service-info">
+                            <div class="service-header">
+                                <h3 class="service-title">Overnight Boarding</h3>
+                                <p class="service-description">Safe and comfortable overnight care in a home environment.</p>
+                            </div>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-bed"></i> Comfortable sleeping
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-utensils"></i> Meals included
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-walking"></i> Daily exercise
+                                </div>
+                            </div>
+                            <div class="service-price">Starting at $50/night</div>
+                            <div class="service-cta">
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar"></i> Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 5 - Pet Training -->
+                <div class="col-md-6 col-lg-4" data-category="training">
+                    <div class="service-card">
+                        <div class="service-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?auto=format&fit=crop&w=600') center/cover;">
+                            <div class="service-badge">Certified</div>
+                        </div>
+                        <div class="service-info">
+                            <div class="service-header">
+                                <h3 class="service-title">Obedience Training</h3>
+                                <p class="service-description">Professional training to improve your pet's behavior and strengthen your bond.</p>
+                            </div>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-graduation-cap"></i> Certified trainers
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-home"></i> At your home
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-clock"></i> 60 minute sessions
+                                </div>
+                            </div>
+                            <div class="service-price">Starting at $60/session</div>
+                            <div class="service-cta">
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar"></i> Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 6 - Vet Visits -->
+                <div class="col-md-6 col-lg-4" data-category="other">
+                    <div class="service-card">
+                        <div class="service-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=600') center/cover;">
+                            <div class="service-badge">Professional</div>
+                        </div>
+                        <div class="service-info">
+                            <div class="service-header">
+                                <h3 class="service-title">Veterinary Assistance</h3>
+                                <p class="service-description">Transportation and accompaniment to vet appointments.</p>
+                            </div>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-car"></i> Safe transportation
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-user-md"></i> Appointment support
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-pills"></i> Medication pickup
+                                </div>
+                            </div>
+                            <div class="service-price">Starting at $35/visit</div>
+                            <div class="service-cta">
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar"></i> Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <button class="btn btn-outline">
+                    <i class="fas fa-plus-circle me-2"></i> Load More Services
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How PawFect Works</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Find Services</h3>
+                        <p>Browse our comprehensive list of pet care services and find what you need.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Book Online</h3>
+                        <p>Select your preferred provider and schedule appointments with just a few clicks.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step">
+                        <div class="step-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <h3>Enjoy Peace of Mind</h3>
+                        <p>Relax knowing your pet is in good hands with our vetted professionals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    How do I book a service?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Booking a service is easy! Simply browse our services, select the one you need, choose your preferred provider, and schedule a time that works for you. You can book online or through our mobile app.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Are your providers background checked?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, all our providers undergo thorough background checks, reference verification, and in-person interviews before they're approved to join our platform. Your pet's safety is our top priority.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    What if I need to cancel or reschedule?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You can cancel or reschedule appointments up to 24 hours before the scheduled time without any penalty. For cancellations within 24 hours, a small fee may apply depending on the service provider's policy.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    How are payments handled?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    All payments are processed securely through our platform. You'll be charged after the service is completed. We accept all major credit cards, PayPal, and Apple Pay. Tips for providers can be added through the app after service completion.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    What if my pet has special needs?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Many of our providers have experience with special needs pets. When booking, you can specify any special requirements your pet may have, and we'll match you with providers who have the appropriate experience and skills.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5 mb-5">
+                <div class="col-lg-3">
+                    <h3>PawFect</h3>
+                    <p class="text-light mb-4">Connecting pet owners with trusted care providers for all pet service needs.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Providers</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h3>Services</h3>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="#">Dog Walking</a></li>
+                        <li><a href="#">Pet Sitting</a></li>
+                        <li><a href="#">Pet Boarding</a></li>
+                        <li><a href="#">Pet Grooming</a></li>
+                        <li><a href="#">Pet Training</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h3>Support</h3>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 PawFect. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Provider Dashboard Button -->
+    <button class="btn btn-primary provider-dashboard-btn">
+        <i class="fas fa-exchange-alt me-1"></i> Switch to Provider Mode
+    </button>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.category-tab');
+            const serviceCards = document.querySelectorAll('[data-category]');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Get the category to show
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show/hide service cards based on category
+                    serviceCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Provider dashboard button
+            const providerBtn = document.querySelector('.provider-dashboard-btn');
+            providerBtn.addEventListener('click', function() {
+                alert('Switching to Provider Dashboard...');
+                // In a real app, this would redirect to the provider dashboard
+            });
+        });
+    </script>
+</body>
+</html>
