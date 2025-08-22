@@ -3,615 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetCare Connect | Home for Pet Lovers</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>PawFect - Your Pet's Perfect Care Partner</title>
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="sticky-top bg-white shadow-sm">
-        <nav class="navbar navbar-expand-lg py-3">
-            <div class="container">
-                <a class="navbar-brand logo d-flex align-items-center" href="index.html">
-                    <i class="fas fa-paw me-2"></i>
-                    <h1>PawFect</h1>
-                </a>
+    <!-- Header & Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-paw me-2"></i>PawFect
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
                 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="pages/home.html"><i class="fas fa-home me-1"></i> Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pages/services.html"><i class="fas fa-concierge-bell me-1"></i> Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-users me-1"></i> Providers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-map-marker-alt me-1"></i> Nearby</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-question-circle me-1"></i> Help</a>
-                        </li>
-                    </ul>
-                    
-                    <div class="d-flex gap-3">
-                      <a href="pages/login.html"><button class="btn btn-secondary"><i class="fas fa-sign-in-alt me-1"></i>Log In</button></a>  
-                        <a href="pages/regester.html"><button class="btn btn-primary"><i class="fas fa-user-plus me-1"></i> Sign Up</button></a>
-                    </div>
+                <div class="d-flex align-items-center">
+                    <a href="login.html" class="btn btn-outline-primary me-2">
+                        <i class="fas fa-sign-in-alt me-1"></i>Login
+                    </a>
+                    <a href="register.html" class="btn btn-primary">
+                        <i class="fas fa-user-plus me-1"></i>Register
+                    </a>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero-section">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="row align-items-center min-vh-100">
+                    <div class="col-lg-6">
+                        <h1 class="hero-title text-white mb-4">
+                            Find Your Pet's Perfect Care Today!
+                        </h1>
+                        <p class="hero-subtitle text-white-50 mb-4">
+                            Connect with trusted pet care providers in Bangladesh. From dog walking to grooming, 
+                            we've got your furry friend covered.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="register.html" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-user-plus me-2"></i>Get Started
+                            </a>
+                            <a href="login.html" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-sign-in-alt me-2"></i>Already Have Account?
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hero-image">
+                            <img src="https://images.unsplash.com/photo-1587764379873-9783df4ef613?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                                 alt="Pet Care Services" class="img-fluid rounded-3 shadow">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5 bg-light">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <h2>Your Pet's <span>Happiness</span> is Our Priority</h2>
-                    <p>Find trusted pet care providers, discover nearby pet services, and connect with a community of pet lovers who understand your furry family members.</p>
-                    <div class="d-flex gap-3 mb-5">
-                        <button class="btn btn-primary"><i class="fas fa-search me-1"></i> Find Services</button>
-                        <button class="btn btn-secondary"><i class="fas fa-paw me-1"></i> Become a Provider</button>
-                    </div>
-                    <div class="row hero-stats">
-                        <div class="col-md-4 stat-item text-center">
-                            <div class="stat-value">5,000+</div>
-                            <div class="stat-label">Happy Pets</div>
+                <div class="col-lg-6">
+                    <h2 class="section-title">About PawFect</h2>
+                    <p class="section-subtitle mb-4">
+                        We are Bangladesh's premier pet care service platform, connecting pet owners with verified, 
+                        professional pet care providers.
+                    </p>
+                    <div class="features-list">
+                        <div class="feature-item mb-3">
+                            <i class="fas fa-shield-alt text-primary me-3"></i>
+                            <span>Verified Service Providers</span>
                         </div>
-                        <div class="col-md-4 stat-item text-center">
-                            <div class="stat-value">1,200+</div>
-                            <div class="stat-label">Trusted Providers</div>
+                        <div class="feature-item mb-3">
+                            <i class="fas fa-map-marker-alt text-primary me-3"></i>
+                            <span>Location-Based Services</span>
                         </div>
-                        <div class="col-md-4 stat-item text-center">
-                            <div class="stat-value">98%</div>
-                            <div class="stat-label">Satisfaction Rate</div>
+                        <div class="feature-item mb-3">
+                            <i class="fas fa-clock text-primary me-3"></i>
+                            <span>24/7 Availability</span>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center text-lg-end">
-                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600" alt="Happy dog with owner" class="img-fluid rounded shadow">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="py-5 bg-white">
-        <div class="container py-5">
-            <div class="section-header">
-                <h2 class="section-title">Our Pet Services</h2>
-                <p class="section-subtitle">From daily walks to specialized care, we connect you with professionals who love pets as much as you do.</p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-walking"></i>
+                        <div class="feature-item mb-3">
+                            <i class="fas fa-star text-primary me-3"></i>
+                            <span>Rated & Reviewed Services</span>
                         </div>
-                        <h3>Dog Walking</h3>
-                        <p>Daily exercise for your furry friend with trusted walkers in your neighborhood.</p>
-                        <a href="pages/login.html" class="btn btn-outline">Find Walkers</a>
                     </div>
                 </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h3>Pet Sitting</h3>
-                        <p>In-home care while you're away, keeping your pets comfortable in their own environment.</p>
-                        <a href="pages/login.html" class="btn btn-outline">Find Sitters</a>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-bath"></i>
-                        </div>
-                        <h3>Grooming</h3>
-                        <p>Professional grooming services to keep your pet looking and feeling their best.</p>
-                        <a href="pages/login.html" class="btn btn-outline">Find Groomers</a>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3>Training</h3>
-                        <p>Expert trainers to help with obedience, behavior, and special skills.</p>
-                       <a href="pages/login.html" class="btn btn-outline"> Find Trainerss</a>
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="About PawFect" class="img-fluid rounded-3 shadow">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Providers Section -->
-
-        <div class="container py-5">
-            <div class="section-header">
-                <h2 class="section-title">Recommended Pet Care Providers</h2>
-                <p class="section-subtitle">Top-rated professionals loved by our community of pet parents</p>
-            </div>
-            
-            <div class="tabs-container">
-                <div class="tabs">
-                    <div class="tab active" data-category="walking">
-                        <i class="fas fa-walking"></i> Dog Walking
-                    </div>
-                    <div class="tab" data-category="sitting">
-                        <i class="fas fa-home"></i> Pet Sitting
-                    </div>
-                    <div class="tab" data-category="grooming">
-                        <i class="fas fa-bath"></i> Grooming
-                    </div>
-                    <div class="tab" data-category="training">
-                        <i class="fas fa-graduation-cap"></i> Training
-                    </div>
-                </div>
-            </div>
-            
-            <div class="providers-grid">
-                <!-- Provider 1 - Dog Walking -->
-                <div class="provider-card" data-category="walking">
-                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=600') center/cover;">
-                        <div class="provider-badge">Top Rated</div>
-                    </div>
-                    <div class="provider-info">
-                        <div class="provider-header">
-                            <div class="provider-name">Sarah Johnson</div>
-                            <div class="provider-rating">
-                                <i class="fas fa-star"></i> 4.9
-                            </div>
-                        </div>
-                        <div class="provider-service">
-                            <div class="service-icon">
-                                <i class="fas fa-walking"></i>
-                            </div>
-                            Dog Walking Specialist
-                        </div>
-                        <div class="provider-price">$25/hour</div>
-                        <p class="provider-description">Experienced walker with 5+ years working with all breeds. Provides customized walks based on your dog's needs.</p>
-                        <div class="provider-actions">
-                            <button class="btn btn-outline">
-                                <i class="fas fa-user"></i> View Profile
-                            </button>
-                            <button class="btn btn-primary">
-                                <i class="fas fa-calendar-check"></i> Book Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Provider 2 - Pet Sitting -->
-                <div class="provider-card" data-category="sitting">
-                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1601758174810-85e9455dc9da?auto=format&fit=crop&w=600') center/cover;">
-                        <div class="provider-badge">New</div>
-                    </div>
-                    <div class="provider-info">
-                        <div class="provider-header">
-                            <div class="provider-name">Mike Thompson</div>
-                            <div class="provider-rating">
-                                <i class="fas fa-star"></i> 4.8
-                            </div>
-                        </div>
-                        <div class="provider-service">
-                            <div class="service-icon">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            Pet Sitting Expert
-                        </div>
-                        <div class="provider-price">$35/night</div>
-                        <p class="provider-description">Specializes in overnight care for cats and small dogs. Provides daily updates and photos during your absence.</p>
-                        <div class="provider-actions">
-                            <button class="btn btn-outline">
-                                <i class="fas fa-user"></i> View Profile
-                            </button>
-                            <button class="btn btn-primary">
-                                <i class="fas fa-calendar-check"></i> Book Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Provider 3 - Grooming -->
-                <div class="provider-card" data-category="grooming">
-                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=600') center/cover;">
-                        <div class="provider-badge">Popular</div>
-                    </div>
-                    <div class="provider-info">
-                        <div class="provider-header">
-                            <div class="provider-name">Emma Davis</div>
-                            <div class="provider-rating">
-                                <i class="fas fa-star"></i> 5.0
-                            </div>
-                        </div>
-                        <div class="provider-service">
-                            <div class="service-icon">
-                                <i class="fas fa-bath"></i>
-                            </div>
-                            Certified Pet Groomer
-                        </div>
-                        <div class="provider-price">$45/session</div>
-                        <p class="provider-description">Certified groomer specializing in hypoallergenic treatments. Gentle approach for anxious pets.</p>
-                        <div class="provider-actions">
-                            <button class="btn btn-outline">
-                                <i class="fas fa-user"></i> View Profile
-                            </button>
-                            <button class="btn btn-primary">
-                                <i class="fas fa-calendar-check"></i> Book Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Provider 4 - Training -->
-                <div class="provider-card" data-category="training">
-                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600') center/cover;">
-                        <div class="provider-badge">Expert</div>
-                    </div>
-                    <div class="provider-info">
-                        <div class="provider-header">
-                            <div class="provider-name">Thomas Anderson</div>
-                            <div class="provider-rating">
-                                <i class="fas fa-star"></i> 4.9
-                            </div>
-                        </div>
-                        <div class="provider-service">
-                            <div class="service-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            Professional Trainer
-                        </div>
-                        <div class="provider-price">$60/hour</div>
-                        <p class="provider-description">Certified dog trainer with 10+ years experience. Specializes in behavior modification and obedience.</p>
-                        <div class="provider-actions">
-                            <button class="btn btn-outline">
-                                <i class="fas fa-user"></i> View Profile
-                            </button>
-                            <button class="btn btn-primary">
-                                <i class="fas fa-calendar-check"></i> Book Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Provider 5 - Dog Walking -->
-                <div class="provider-card" data-category="walking">
-                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1553284965-83fd9e1cb0fc?auto=format&fit=crop&w=600') center/cover;">
-                        <div class="provider-badge">Available</div>
-                    </div>
-                    <div class="provider-info">
-                        <div class="provider-header">
-                            <div class="provider-name">Alex Rodriguez</div>
-                            <div class="provider-rating">
-                                <i class="fas fa-star"></i> 4.7
-                            </div>
-                        </div>
-                        <div class="provider-service">
-                            <div class="service-icon">
-                                <i class="fas fa-walking"></i>
-                            </div>
-                            Dog Walker & Trainer
-                        </div>
-                        <div class="provider-price">$22/hour</div>
-                        <p class="provider-description">Specializes in large breed dogs and puppy training. Offers group walks and socialization sessions.</p>
-                        <div class="provider-actions">
-                            <button class="btn btn-outline">
-                                <i class="fas fa-user"></i> View Profile
-                            </button>
-                            <button class="btn btn-primary">
-                                <i class="fas fa-calendar-check"></i> Book Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Provider 6 - Pet Sitting -->
-                <div class="provider-card" data-category="sitting">
-                    <div class="provider-image" style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=600') center/cover;">
-                        <div class="provider-badge">Special Needs</div>
-                    </div>
-                    <div class="provider-info">
-                        <div class="provider-header">
-                            <div class="provider-name">Lisa Chen</div>
-                            <div class="provider-rating">
-                                <i class="fas fa-star"></i> 4.9
-                            </div>
-                        </div>
-                        <div class="provider-service">
-                            <div class="service-icon">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            Pet Sitter
-                        </div>
-                        <div class="provider-price">$40/night</div>
-                        <p class="provider-description">Provides medical care for pets with special needs. Vet tech experience with medication administration.</p>
-                        <div class="provider-actions">
-                            <button class="btn btn-outline">
-                                <i class="fas fa-user"></i> View Profile
-                            </button>
-                            <button class="btn btn-primary">
-                                <i class="fas fa-calendar-check"></i> Book Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <!-- Nearby Section -->
-    <section class="py-5 bg-white">
-        <div class="container py-5">
-            <div class="section-header">
-                <h2 class="section-title">Nearby Pet Resources</h2>
-                <p class="section-subtitle">Find essential pet services near your location</p>
-            </div>
-            
-            <div class="d-flex flex-wrap justify-content-center mb-5">
-                <div class="tab active">All</div>
-                <div class="tab">Veterinarians</div>
-                <div class="tab">Pet Stores</div>
-                <div class="tab">Parks</div>
-                <div class="tab">Grooming</div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="place-card">
-                        <div class="place-image" style="background: url('https://images.unsplash.com/photo-1583339793403-3b313a4a0a6a?auto=format&fit=crop&w=600') center/cover;"></div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div class="h5 mb-0">Happy Paws Vet Clinic</div>
-                                <div class="place-type">Veterinarian</div>
-                            </div>
-                            <p class="mb-2">Comprehensive pet healthcare with emergency services</p>
-                            <div class="d-flex align-items-center text-muted mb-3">
-                                <i class="fas fa-map-marker-alt me-2"></i> 1.2 miles away
-                            </div>
-                            <button class="btn btn-outline w-100">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="place-card">
-                        <div class="place-image" style="background: url('https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600') center/cover;"></div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div class="h5 mb-0">Pet Paradise Store</div>
-                                <div class="place-type">Pet Store</div>
-                            </div>
-                            <p class="mb-2">Premium pet food, toys, and accessories</p>
-                            <div class="d-flex align-items-center text-muted mb-3">
-                                <i class="fas fa-map-marker-alt me-2"></i> 0.8 miles away
-                            </div>
-                            <button class="btn btn-outline w-100">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="place-card">
-                        <div class="place-image" style="background: url('https://images.unsplash.com/photo-1551334787-21e6bd3ab135?auto=format&fit=crop&w=600') center/cover;"></div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div class="h5 mb-0">Central Bark Park</div>
-                                <div class="place-type">Dog Park</div>
-                            </div>
-                            <p class="mb-2">Fully fenced off-leash area with separate sections</p>
-                            <div class="d-flex align-items-center text-muted mb-3">
-                                <i class="fas fa-map-marker-alt me-2"></i> 2.3 miles away
-                            </div>
-                            <button class="btn btn-outline w-100">View Details</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-5" style="background: linear-gradient(135deg, #f5f9ff 0%, #f0f7ff 100%);">
-        <div class="container py-5">
-            <div class="section-header">
-                <h2 class="section-title">Pet Parents Love Us</h2>
-                <p class="section-subtitle">Hear what our community has to say about their experiences</p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Finding a reliable dog walker was always a challenge until I discovered PetCare Connect. Sarah has been walking Max for 6 months now and he absolutely adores her!"</p>
-                        <div class="d-flex align-items-center">
-                            <div class="author-avatar" style="background: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100') center/cover;"></div>
-                            <div class="ms-3">
-                                <h4 class="mb-0">Jennifer Martinez</h4>
-                                <p class="text-muted mb-0">Dog Mom to Max</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"As a frequent traveler, I needed someone trustworthy to care for my cats. Mike from PetCare Connect sends daily updates and photos, giving me peace of mind."</p>
-                        <div class="d-flex align-items-center">
-                            <div class="author-avatar" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100') center/cover;"></div>
-                            <div class="ms-3">
-                                <h4 class="mb-0">David Chen</h4>
-                                <p class="text-muted mb-0">Cat Dad to Luna & Milo</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Emma transformed my anxious rescue dog during grooming sessions. Her patience and expertise made all the difference. Couldn't recommend her more!"</p>
-                        <div class="d-flex align-items-center">
-                            <div class="author-avatar" style="background: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100') center/cover;"></div>
-                            <div class="ms-3">
-                                <h4 class="mb-0">Sophia Williams</h4>
-                                <p class="text-muted mb-0">Dog Mom to Charlie</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
+    <!-- Services Preview Section -->
+    <section id="services" class="services-preview-section py-5">
         <div class="container">
-            <h2>Ready to Experience Better Pet Care?</h2>
-            <p>Join thousands of pet parents and professional caregivers in our community</p>
-            <div class="d-flex gap-3 justify-content-center">
-                <button class="btn btn-light"><i class="fas fa-download me-1"></i> Get the App</button>
-                <button class="btn btn-outline-light"><i class="fas fa-globe me-1"></i> Browse Services</button>
+            <h2 class="section-title text-center mb-5">Our Services</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-preview-card text-center">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-walking fa-3x text-primary"></i>
+                        </div>
+                        <h5>Dog Walking</h5>
+                        <p class="text-muted">Professional dog walking services with GPS tracking</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-preview-card text-center">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-home fa-3x text-primary"></i>
+                        </div>
+                        <h5>Pet Sitting</h5>
+                        <p class="text-muted">Loving pet sitting in your home or our facility</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-preview-card text-center">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-cut fa-3x text-primary"></i>
+                        </div>
+                        <h5>Grooming</h5>
+                        <p class="text-muted">Professional pet grooming with premium products</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-preview-card text-center">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-graduation-cap fa-3x text-primary"></i>
+                        </div>
+                        <h5>Training</h5>
+                        <p class="text-muted">Certified dog training and behavior modification</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="register.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-user-plus me-2"></i>Join Now to Access Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">How It Works</h2>
+            <div class="row">
+                <div class="col-lg-4 text-center mb-4">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h5>Create Account</h5>
+                        <p>Sign up and create your profile in minutes</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center mb-4">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h5>Find Services</h5>
+                        <p>Browse and search for pet care services near you</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center mb-4">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h5>Book & Enjoy</h5>
+                        <p>Book your preferred service and enjoy quality pet care</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="section-title text-center mb-5">Contact Us</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="contact-info">
+                                <h5><i class="fas fa-phone text-primary me-2"></i>Phone</h5>
+                                <p>+880 1234-567890</p>
+                                
+                                <h5><i class="fas fa-envelope text-primary me-2"></i>Email</h5>
+                                <p>info@pawfect.com</p>
+                                
+                                <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Address</h5>
+                                <p>House #123, Road #12, Dhanmondi, Dhaka-1209, Bangladesh</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <form class="contact-form">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Subject" required>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer bg-dark text-white py-5">
         <div class="container">
-            <div class="row g-5 mb-5">
-                <div class="col-lg-3">
-                    <h3>PetCare Connect</h3>
-                    <p class="text-light mb-4">Connecting pet owners with trusted care providers for all pet service needs.</p>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3"><i class="fas fa-paw me-2"></i>PawFect</h5>
+                    <p class="text-muted">
+                        Your trusted partner for all pet care needs in Bangladesh. 
+                        Connect with verified providers and give your pets the care they deserve.
+                    </p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 
-                <div class="col-lg-3">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links list-unstyled">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Providers</a></li>
-                        <li><a href="#">How It Works</a></li>
-                        <li><a href="#">Pricing</a></li>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-muted text-decoration-none">Home</a></li>
+                        <li><a href="#about" class="text-muted text-decoration-none">About</a></li>
+                        <li><a href="#services" class="text-muted text-decoration-none">Services</a></li>
+                        <li><a href="#contact" class="text-muted text-decoration-none">Contact</a></li>
                     </ul>
                 </div>
                 
-                <div class="col-lg-3">
-                    <h3>Services</h3>
-                    <ul class="footer-links list-unstyled">
-                        <li><a href="#">Dog Walking</a></li>
-                        <li><a href="#">Pet Sitting</a></li>
-                        <li><a href="#">Pet Boarding</a></li>
-                        <li><a href="#">Pet Grooming</a></li>
-                        <li><a href="#">Pet Training</a></li>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="mb-3">Services</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Dog Walking</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Pet Sitting</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Grooming</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Training</a></li>
                     </ul>
                 </div>
                 
-                <div class="col-lg-3">
-                    <h3>Support</h3>
-                    <ul class="footer-links list-unstyled">
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
+                <div class="col-lg-4 mb-4">
+                    <h6 class="mb-3">Get Started</h6>
+                    <p class="text-muted">Ready to find the perfect care for your pet?</p>
+                    <div class="d-grid gap-2">
+                        <a href="register.html" class="btn btn-primary">Create Account</a>
+                        <a href="login.html" class="btn btn-outline-light">Login</a>
+                    </div>
                 </div>
             </div>
             
-            <div class="copyright">
-                &copy; 2023 PetCare Connect. All rights reserved.
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2024 PawFect. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-muted text-decoration-none me-3">Terms of Service</a>
+                    <a href="#" class="text-muted text-decoration-none">Cookie Policy</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        // Tab functionality for nearby section
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.tab');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Remove active class from all tabs
-                    tabs.forEach(t => t.classList.remove('active'));
-                    
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-                    
-                    // In a real app, this would filter the nearby places
-                    // For this demo, we'll just show a message
-                    console.log(`Showing: ${this.textContent}`);
-                });
-            });
-        });
-    </script>
-    <script>
-         document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.tab');
-            const providerCards = document.querySelectorAll('.provider-card');
-            
-            // Initialize with first tab active and only showing its providers
-            providerCards.forEach(card => {
-                if (card.getAttribute('data-category') !== 'walking') {
-                    card.style.display = 'none';
-                }
-            });
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Remove active class from all tabs
-                    tabs.forEach(t => t.classList.remove('active'));
-                    
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-                    
-                    // Get the category to show
-                    const category = this.getAttribute('data-category');
-                    
-                    // Show/hide provider cards based on category
-                    providerCards.forEach(card => {
-                        if (card.getAttribute('data-category') === category) {
-                            card.style.display = 'block';
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, 50);
-                        } else {
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                card.style.display = 'none';
-                            }, 300);
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+    <!-- Custom JS -->
+    <script src="landing.js"></script>
 </body>
 </html>

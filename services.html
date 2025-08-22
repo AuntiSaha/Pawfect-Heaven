@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - PawFect</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-paw me-2"></i>PawFect
+            </a>
+            
+            <div class="d-none d-lg-block me-3">
+                <div class="location-display">
+                    <i class="fas fa-map-marker-alt text-danger me-1"></i>
+                    <span id="current-location">Dhaka, Bangladesh</span>
+                    <button class="btn btn-sm btn-outline-primary ms-2" onclick="changeLocation()">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nearby.html">Nearby</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <div class="dropdown me-3">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-2"></i>Account
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="user-dashboard.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user-edit me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="bookings.html"><i class="fas fa-calendar-check me-2"></i>My Bookings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-primary position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount">3</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" style="width: 300px;">
+                            <li><h6 class="dropdown-header">Notifications</h6></li>
+                            <li><a class="dropdown-item" href="#">New service available in your area</a></li>
+                            <li><a class="dropdown-item" href="#">Your booking with Sarah Ahmed is confirmed</a></li>
+                            <li><a class="dropdown-item" href="#">Payment received for grooming service</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-center" href="#">View All</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid" style="padding-top: 100px;">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-filter me-2"></i>Filters</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Service Type Filter -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Service Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="dog-walking" id="dogWalking" checked>
+                                <label class="form-check-label" for="dogWalking">Dog Walking</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="pet-sitting" id="petSitting" checked>
+                                <label class="form-check-label" for="petSitting">Pet Sitting</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="grooming" id="grooming" checked>
+                                <label class="form-check-label" for="grooming">Grooming</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="training" id="training" checked>
+                                <label class="form-check-label" for="training">Training</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="veterinary" id="veterinary" checked>
+                                <label class="form-check-label" for="veterinary">Veterinary Care</label>
+                            </div>
+                        </div>
+
+                        <!-- Price Range Filter -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Price Range (৳)</label>
+                            <div class="d-flex gap-2">
+                                <input type="number" class="form-control" placeholder="Min" id="minPrice" value="0">
+                                <input type="number" class="form-control" placeholder="Max" id="maxPrice" value="5000">
+                            </div>
+                        </div>
+
+                        <!-- Rating Filter -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Minimum Rating</label>
+                            <select class="form-select" id="minRating">
+                                <option value="0">Any Rating</option>
+                                <option value="4">4+ Stars</option>
+                                <option value="4.5">4.5+ Stars</option>
+                                <option value="5">5 Stars Only</option>
+                            </select>
+                        </div>
+
+                        <!-- Distance Filter -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Maximum Distance</label>
+                            <select class="form-select" id="maxDistance">
+                                <option value="5">5 km</option>
+                                <option value="10" selected>10 km</option>
+                                <option value="20">20 km</option>
+                                <option value="50">50 km</option>
+                            </select>
+                        </div>
+
+                        <!-- Availability Filter -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Availability</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="immediate" id="immediate" checked>
+                                <label class="form-check-label" for="immediate">Available Now</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="today" id="today" checked>
+                                <label class="form-check-label" for="today">Available Today</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="week" id="week" checked>
+                                <label class="form-check-label" for="week">Available This Week</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary w-100" onclick="applyFilters()">
+                            <i class="fas fa-search me-2"></i>Apply Filters
+                        </button>
+                        <button class="btn btn-outline-secondary w-100 mt-2" onclick="clearFilters()">
+                            <i class="fas fa-times me-2"></i>Clear Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Search and Sort Bar -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search services..." id="searchInput">
+                                    <button class="btn btn-primary" type="button" onclick="searchServices()">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-end">
+                                    <select class="form-select me-2" style="width: auto;" id="sortBy">
+                                        <option value="relevance">Sort by Relevance</option>
+                                        <option value="price-low">Price: Low to High</option>
+                                        <option value="price-high">Price: High to Low</option>
+                                        <option value="rating">Highest Rated</option>
+                                        <option value="distance">Nearest First</option>
+                                    </select>
+                                    <button class="btn btn-outline-primary" onclick="refreshServices()">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Grid -->
+                <div id="servicesContainer">
+                    <!-- Services will be loaded here dynamically -->
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-4" id="loadMoreContainer" style="display: none;">
+                    <button class="btn btn-primary btn-lg" onclick="loadMoreServices()">
+                        <i class="fas fa-plus me-2"></i>Load More Services
+                    </button>
+                </div>
+
+                <!-- No Results Message -->
+                <div id="noResults" class="text-center py-5" style="display: none;">
+                    <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                    <h4 class="text-muted">No services found</h4>
+                    <p class="text-muted">Try adjusting your filters or search terms</p>
+                    <button class="btn btn-primary" onclick="clearFilters()">Clear All Filters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Book Service</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="bookingForm">
+                        <!-- Booking form will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chatbot -->
+    <div class="floating-chatbot">
+        <div class="chatbot-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chatbot-container" id="chatbotContainer">
+            <div class="chatbot-header">
+                <span><i class="fas fa-robot me-2"></i>PetCare Assistant</span>
+                <button onclick="toggleChatbot()" class="btn-close btn-close-white"></button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">
+                    <p>Hello! I'm here to help you find the perfect pet care service. How can I assist you today?</p>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message..." id="chatbotInput" onkeypress="handleChatbotInput(event)">
+                <button onclick="sendChatbotMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="services.js"></script>
+</body>
+</html>

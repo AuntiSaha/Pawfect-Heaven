@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earnings - Provider Dashboard - PawFect</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="provider-dashboard.html">
+                <i class="fas fa-paw me-2"></i>PawFect
+            </a>
+            
+            <!-- Location Display -->
+            <div class="d-none d-lg-block me-3">
+                <div class="location-display">
+                    <i class="fas fa-map-marker-alt text-danger me-1"></i>
+                    <span id="current-location">Dhaka, Bangladesh</span>
+                    <button class="btn btn-sm btn-outline-primary ms-2" onclick="changeLocation()">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="provider-dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="provider-services.html">My Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="provider-bookings.html">Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="provider-earnings.html">Earnings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="provider-profile.html">Profile</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <!-- Notifications -->
+                    <div class="dropdown me-3">
+                        <button class="btn btn-outline-primary position-relative" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount">1</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><h6 class="dropdown-header">Notifications</li>
+                            <li><a class="dropdown-item" href="#">Payment received</a></li>
+                            <li><a class="dropdown-item" href="#">New review</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-center" href="#">View all</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- User Menu -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-2"></i>Provider
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="provider-profile.html"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="provider-settings.html"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container" style="padding-top: 100px;">
+        <!-- Page Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="mb-1"><i class="fas fa-money-bill-wave me-2 text-primary"></i>Earnings</h2>
+                        <p class="text-muted mb-0">Track your income and financial performance</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-outline-primary" onclick="refreshEarnings()">
+                            <i class="fas fa-sync-alt me-2"></i>Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings Overview -->
+        <div class="row mb-4">
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 class="mb-0" id="totalEarnings">৳0</h4>
+                                <p class="mb-0">Total Earnings</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-wallet fa-2x opacity-75"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 class="mb-0" id="thisMonthEarnings">৳0</h4>
+                                <p class="mb-0">This Month</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-calendar-alt fa-2x opacity-75"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card bg-info text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h4 class="mb-0" id="thisWeekEarnings">৳0</h4>
+                                    <p class="mb-0">This Week</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-calendar-week fa-2x opacity-75"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card bg-warning text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 class="mb-0" id="pendingEarnings">৳0</h4>
+                                <p class="mb-0">Pending</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-clock fa-2x opacity-75"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time Period Selector -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-4 mb-2">
+                                <label class="form-label">Time Period</label>
+                                <select class="form-select" id="timePeriod" onchange="changeTimePeriod()">
+                                    <option value="7">Last 7 Days</option>
+                                    <option value="30" selected>Last 30 Days</option>
+                                    <option value="90">Last 3 Months</option>
+                                    <option value="365">Last Year</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-label">Start Date</label>
+                                <input type="date" class="form-control" id="startDate" onchange="updateDateRange()">
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <label class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="endDate" onchange="updateDateRange()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="row mb-4">
+            <div class="col-lg-8 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Earnings Trend</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="earningsChart" style="height: 300px;">
+                            <!-- Chart will be rendered here -->
+                            <div class="text-center py-5">
+                                <i class="fas fa-chart-line fa-3x text-muted mb-3"></i>
+                                <h6 class="text-muted">Earnings Chart</h6>
+                                <p class="text-muted small">Visual representation of your earnings over time</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Earnings by Service</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="serviceChart" style="height: 300px;">
+                            <!-- Chart will be rendered here -->
+                            <div class="text-center py-5">
+                                <i class="fas fa-chart-pie fa-3x text-muted mb-3"></i>
+                                <h6 class="text-muted">Service Breakdown</h6>
+                                <p class="text-muted small">Earnings distribution across different services</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0"><i class="fas fa-list me-2"></i>Recent Transactions</h5>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="sortTransactions('date')">
+                                    <i class="fas fa-calendar me-1"></i>Date
+                                </button>
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="sortTransactions('amount')">
+                                    <i class="fas fa-money-bill me-1"></i>Amount
+                                </button>
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="sortTransactions('status')">
+                                    <i class="fas fa-info-circle me-1"></i>Status
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="transactionsContainer">
+                            <!-- Transactions will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Performance -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Service Performance</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="servicePerformanceContainer">
+                            <!-- Service performance will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transaction Details Modal -->
+    <div class="modal fade" id="transactionDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Transaction Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="transactionDetailsContent">
+                    <!-- Transaction details will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="provider-earnings.js"></script>
+</body>
+</html>

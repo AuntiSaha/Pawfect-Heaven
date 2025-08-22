@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Provider Dashboard - PawFect</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="provider-dashboard.html">
+                <i class="fas fa-paw me-2"></i>PawFect
+            </a>
+            
+            <!-- Location Display -->
+            <div class="d-none d-lg-block me-3">
+                <div class="location-display">
+                    <i class="fas fa-map-marker-alt text-danger me-1"></i>
+                    <span id="current-location">Dhaka, Bangladesh</span>
+                    <button class="btn btn-sm btn-outline-primary ms-2" onclick="changeLocation()">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="provider-dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="provider-services.html">My Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="provider-bookings.html">Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="provider-earnings.html">Earnings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="provider-profile.html">Profile</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <!-- Notifications -->
+                    <div class="dropdown me-3">
+                        <button class="btn btn-outline-primary position-relative" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount">1</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><h6 class="dropdown-header">Notifications</li>
+                            <li><a class="dropdown-item" href="#">New booking request</a></li>
+                            <li><a class="dropdown-item" href="#">Payment received</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-center" href="#">View all</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- User Menu -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-2"></i>Provider
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="provider-profile.html"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="provider-settings.html"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container" style="padding-top: 100px;">
+        <!-- Page Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="mb-1"><i class="fas fa-user me-2 text-primary"></i>Profile</h2>
+                        <p class="text-muted mb-0">Manage your personal and business information</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" onclick="saveAllChanges()">
+                            <i class="fas fa-save me-2"></i>Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Navigation -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <ul class="nav nav-pills nav-fill" id="profileTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="personal-tab" data-bs-toggle="pill" data-bs-target="#personal" type="button" role="tab">
+                                    <i class="fas fa-user me-2"></i>Personal Info
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="business-tab" data-bs-toggle="pill" data-bs-target="#business" type="button" role="tab">
+                                    <i class="fas fa-briefcase me-2"></i>Business Info
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="services-tab" data-bs-toggle="pill" data-bs-target="#services" type="button" role="tab">
+                                    <i class="fas fa-cogs me-2"></i>Service Settings
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="security-tab" data-bs-toggle="pill" data-bs-target="#security" type="button" role="tab">
+                                    <i class="fas fa-shield-alt me-2"></i>Security
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="notifications-tab" data-bs-toggle="pill" data-bs-target="#notifications" type="button" role="tab">
+                                    <i class="fas fa-bell me-2"></i>Notifications
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="tab-content" id="profileTabContent">
+            <!-- Personal Information Tab -->
+            <div class="tab-pane fade show active" id="personal" role="tabpanel">
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card shadow-sm">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                                         alt="Profile Picture" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+                                </div>
+                                <button class="btn btn-outline-primary btn-sm" onclick="changeProfilePicture()">
+                                    <i class="fas fa-camera me-2"></i>Change Picture
+                                </button>
+                                <div class="mt-3">
+                                    <h5 class="mb-1" id="profileName">Provider Name</h5>
+                                    <p class="text-muted mb-0" id="profileEmail">provider@email.com</p>
+                                    <p class="text-muted mb-0" id="profilePhone">+880 1712-345678</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 mb-4">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-user-edit me-2"></i>Personal Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="personalInfoForm">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" name="firstName" id="firstName" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" name="lastName" id="lastName" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Email *</label>
+                                            <input type="email" class="form-control" name="email" id="email" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Phone *</label>
+                                            <input type="tel" class="form-control" name="phone" id="phone" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Date of Birth</label>
+                                            <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Gender</label>
+                                            <select class="form-select" name="gender" id="gender">
+                                                <option value="">Select Gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                                <option value="prefer-not-to-say">Prefer not to say</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Bio</label>
+                                        <textarea class="form-control" name="bio" id="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Information Tab -->
+            <div class="tab-pane fade" id="business" role="tabpanel">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-briefcase me-2"></i>Business Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="businessInfoForm">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Business Name *</label>
+                                            <input type="text" class="form-control" name="businessName" id="businessName" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Business Type</label>
+                                            <select class="form-select" name="businessType" id="businessType">
+                                                <option value="">Select Business Type</option>
+                                                <option value="individual">Individual</option>
+                                                <option value="partnership">Partnership</option>
+                                                <option value="corporation">Corporation</option>
+                                                <option value="llc">LLC</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Tax ID / NID</label>
+                                            <input type="text" class="form-control" name="taxId" id="taxId" placeholder="National ID or Tax ID">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Years of Experience</label>
+                                            <select class="form-select" name="experience" id="experience">
+                                                <option value="">Select Experience</option>
+                                                <option value="0-1">0-1 years</option>
+                                                <option value="1-3">1-3 years</option>
+                                                <option value="3-5">3-5 years</option>
+                                                <option value="5-10">5-10 years</option>
+                                                <option value="10+">10+ years</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Business Description</label>
+                                        <textarea class="form-control" name="businessDescription" id="businessDescription" rows="3" placeholder="Describe your business and services..."></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Settings Tab -->
+            <div class="tab-pane fade" id="services" role="tabpanel">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-cogs me-2"></i>Service Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="serviceSettingsForm">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Service Area (km) *</label>
+                                            <input type="number" class="form-control" name="serviceArea" id="serviceArea" min="1" max="100" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Response Time (hours)</label>
+                                            <select class="form-select" name="responseTime" id="responseTime">
+                                                <option value="">Select Response Time</option>
+                                                <option value="1">Within 1 hour</option>
+                                                <option value="2">Within 2 hours</option>
+                                                <option value="4">Within 4 hours</option>
+                                                <option value="24">Within 24 hours</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Minimum Notice (hours)</label>
+                                            <select class="form-select" name="minimumNotice" id="minimumNotice">
+                                                <option value="">Select Minimum Notice</option>
+                                                <option value="0">No notice required</option>
+                                                <option value="1">1 hour notice</option>
+                                                <option value="2">2 hours notice</option>
+                                                <option value="24">24 hours notice</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Maximum Pets per Service</label>
+                                            <input type="number" class="form-control" name="maxPets" id="maxPets" min="1" max="10" value="3">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Specializations</label>
+                                        <div class="row">
+                                            <div class="col-md-4 mb-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="specializations" value="dogs" id="specDogs">
+                                                    <label class="form-check-label" for="specDogs">Dogs</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="specializations" value="cats" id="specCats">
+                                                    <label class="form-check-label" for="specCats">Cats</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="specializations" value="birds" id="specBirds">
+                                                    <label class="form-check-label" for="specBirds">Birds</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="specializations" value="fish" id="specFish">
+                                                    <label class="form-check-label" for="specFish">Fish</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="specializations" value="reptiles" id="specReptiles">
+                                                    <label class="form-check-label" for="specReptiles">Reptiles</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="specializations" value="other" id="specOther">
+                                                    <label class="form-check-label" for="specOther">Other</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Tab -->
+            <div class="tab-pane fade" id="security" role="tabpanel">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-shield-alt me-2"></i>Security Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="securityForm">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Current Password *</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" name="currentPassword" id="currentPassword" required>
+                                                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('currentPassword')">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">New Password</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" name="newPassword" id="newPassword">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('newPassword')">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Confirm New Password</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('confirmPassword')">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="button" class="btn btn-warning" onclick="changePassword()">
+                                            <i class="fas fa-key me-2"></i>Change Password
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Tab -->
+            <div class="tab-pane fade" id="notifications" role="tabpanel">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-bell me-2"></i>Notification Preferences</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="notificationsForm">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <h6 class="text-primary">Booking Notifications</h6>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notifications" value="newBookings" id="notifNewBookings" checked>
+                                                <label class="form-check-label" for="notifNewBookings">New booking requests</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notifications" value="bookingUpdates" id="notifBookingUpdates" checked>
+                                                <label class="form-check-label" for="notifBookingUpdates">Booking status updates</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notifications" value="cancellations" id="notifCancellations" checked>
+                                                <label class="form-check-label" for="notifCancellations">Booking cancellations</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <h6 class="text-primary">Financial Notifications</h6>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notifications" value="payments" id="notifPayments" checked>
+                                                <label class="form-check-label" for="notifPayments">Payment received</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notifications" value="refunds" id="notifRefunds" checked>
+                                                <label class="form-check-label" for="notifRefunds">Refunds processed</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notifications" value="earnings" id="notifEarnings">
+                                                <label class="form-check-label" for="notifEarnings">Weekly earnings summary</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <h6 class="text-primary">Communication</h6>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notifications" value="messages" id="notifMessages" checked>
+                                                <label class="form-check-label" for="notifMessages">Customer messages</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notifications" value="reviews" id="notifReviews" checked>
+                                                <label class="form-check-label" for="notifReviews">New reviews</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notifications" value="system" id="notifSystem" checked>
+                                                <label class="form-check-label" for="notifSystem">System announcements</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <h6 class="text-primary">Notification Methods</h6>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notificationMethods" value="email" id="methodEmail" checked>
+                                                <label class="form-check-label" for="methodEmail">Email notifications</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notificationMethods" value="sms" id="methodSMS">
+                                                <label class="form-check-label" for="methodSMS">SMS notifications</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" name="notificationMethods" value="push" id="methodPush" checked>
+                                                <label class="form-check-label" for="methodPush">Push notifications</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="provider-profile.js"></script>
+</body>
+</html>
