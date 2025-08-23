@@ -210,3 +210,4 @@ function setupImageLoading() {
 if (document.querySelectorAll('img[data-src]').length > 0) {
     setupImageLoading();
 }
+

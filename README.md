@@ -67,11 +67,28 @@ The platform is fully responsive and optimized for:
 - **Provider Bookings** (`provider-bookings.html`): Handle incoming booking requests
 - **Provider Earnings** (`provider-earnings.html`): Track financial performance and transactions
 - **Provider Profile** (`provider-profile.html`): Manage business and personal information
+- **Admin Dashboard** (`admin-dashboard.html`): Comprehensive admin panel for platform management
 
 ### Installation
 1. Clone or download the project files
 2. Open `index.html` in your web browser
 3. The platform will load with sample data for demonstration
+
+### Admin Access
+To access the admin dashboard:
+1. Go to the login page (`login.html`)
+2. Select "Administrator" from the role dropdown
+3. Use the following credentials:
+   - Email: `admin@pawfect.com`
+   - Password: `admin123`
+
+#### Admin Dashboard Features
+- **User Management**: View, edit, and delete user accounts
+- **Provider Management**: Manage service providers and verify their accounts
+- **Booking Management**: Monitor all bookings on the platform
+- **Reports & Analytics**: Generate detailed reports and view platform statistics
+- **System Settings**: Configure platform settings, security, and notifications
+- **Data Export**: Export user and provider data in CSV format
 
 ### File Structure
 ```
@@ -98,6 +115,7 @@ pawfect-platform/
 ├── nearby.js               # Nearby places functionality
 ├── profile.js              # Profile management functionality
 ├── bookings.js             # Bookings management functionality
+├── admin-dashboard.js      # Admin dashboard functionality
 ├── provider-services.js    # Provider's service management functionality
 ├── provider-bookings.js    # Provider's booking management functionality
 ├── provider-earnings.js    # Provider's earnings tracking functionality

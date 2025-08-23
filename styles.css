@@ -427,6 +427,243 @@ body {
     padding: 1.5rem;
 }
 
+/* Admin Dashboard Specific Styles */
+.content-section {
+    display: none;
+    width: 100%;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.border-left-primary {
+    border-left: 4px solid #007bff !important;
+}
+
+.border-left-success {
+    border-left: 4px solid #28a745 !important;
+}
+
+.border-left-info {
+    border-left: 4px solid #17a2b8 !important;
+}
+
+.border-left-warning {
+    border-left: 4px solid #ffc107 !important;
+}
+
+.text-gray-300 {
+    color: #6c757d !important;
+}
+
+.text-gray-800 {
+    color: #343a40 !important;
+}
+
+.text-xs {
+    font-size: 0.75rem !important;
+}
+
+/* Admin Sidebar Override */
+.admin-sidebar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.admin-sidebar .sidebar-header {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.admin-sidebar .sidebar-header h5 {
+    color: white !important;
+}
+
+.admin-sidebar .sidebar-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.admin-sidebar .sidebar-link:hover,
+.admin-sidebar .sidebar-link.active {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border-left-color: white !important;
+}
+
+.admin-sidebar .sidebar-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Enhanced Admin Dashboard UI */
+.admin-dashboard .card {
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.admin-dashboard .card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.admin-dashboard .card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+}
+
+.admin-dashboard .btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.admin-dashboard .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.admin-dashboard .table {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.admin-dashboard .table thead th {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: none;
+    font-weight: 600;
+    color: #495057;
+}
+
+.admin-dashboard .badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+}
+
+/* Loading animations */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Enhanced notifications */
+.admin-notification {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 300px;
+    max-width: 400px;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .admin-dashboard .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+    
+    .admin-dashboard .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        position: fixed;
+        z-index: 1001;
+    }
+    
+    .admin-dashboard .sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .admin-dashboard .card-body {
+        padding: 1rem;
+    }
+    
+    .admin-dashboard .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .admin-dashboard .navbar-brand {
+        font-size: 1.1rem;
+    }
+    
+    .admin-dashboard .btn {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.75rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .admin-dashboard {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+    
+    .admin-dashboard .card {
+        background-color: #2d2d2d;
+        border-color: #404040;
+    }
+    
+    .admin-dashboard .table {
+        color: #ffffff;
+    }
+    
+    .admin-dashboard .table thead th {
+        background: linear-gradient(135deg, #2d2d2d 0%, #404040 100%);
+        color: #ffffff;
+    }
+}
+
+/* Print styles */
+@media print {
+    .admin-dashboard .sidebar,
+    .admin-dashboard .navbar,
+    .admin-dashboard .btn {
+        display: none !important;
+    }
+    
+    .admin-dashboard .main-content {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+}
+
 .stat-card {
     background: white;
     border-radius: 15px;

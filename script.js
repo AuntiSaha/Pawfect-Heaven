@@ -888,3 +888,4 @@ window.refreshNearby = refreshNearby;
 window.toggleChatbot = toggleChatbot;
 window.handleChatbotInput = handleChatbotInput;
 window.sendChatbotMessage = sendChatbotMessage;
+

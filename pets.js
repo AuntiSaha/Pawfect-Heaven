@@ -573,3 +573,4 @@ window.sortPets = sortPets;
 window.filterPets = filterPets;
 window.changeLocation = changeLocation;
 window.logout = logout;
+

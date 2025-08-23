@@ -412,6 +412,23 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
+// Logout function
+function logout() {
+    // Clear authentication data
+    localStorage.removeItem('petcare_token');
+    localStorage.removeItem('petcare_user');
+    sessionStorage.removeItem('petcare_token');
+    sessionStorage.removeItem('petcare_user');
+    
+    // Show logout notification
+    showNotification('Logged out successfully', 'success');
+    
+    // Redirect to login page
+    setTimeout(() => {
+        window.location.href = 'login.html';
+    }, 1000);
+}
+
 // Export functions for global access
 window.toggleChatbot = toggleChatbot;
 window.handleChatbotInput = handleChatbotInput;

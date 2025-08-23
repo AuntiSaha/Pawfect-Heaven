@@ -118,8 +118,50 @@ function handleLogin(event) {
     setTimeout(() => {
         // Debug: Log the values being used
 
+        // Admin authentication check
+        if (userType === 'admin') {
+            // Simple admin credentials for demo
+            if (email === 'admin@pawfect.com' && password === 'admin123') {
+                const user = {
+                    id: Date.now(),
+                    email: email,
+                    name: 'Administrator',
+                    type: userType,
+                    location: 'Dhaka, Bangladesh'
+                };
+                
+                // Store user data
+                if (rememberMe) {
+                    localStorage.setItem('petcare_token', 'mock_token_' + Date.now());
+                    localStorage.setItem('petcare_user', JSON.stringify(user));
+                } else {
+                    sessionStorage.setItem('petcare_token', 'mock_token_' + Date.now());
+                    sessionStorage.setItem('petcare_user', JSON.stringify(user));
+                }
+                
+                currentUser = user;
+                
+                // Show success message
+                showNotification('Admin login successful! Redirecting...', 'success');
+                
+                // Redirect to admin dashboard
+                setTimeout(() => {
+                    redirectToDashboard();
+                }, 1000);
+                
+                // Reset button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                return;
+            } else {
+                showNotification('Invalid admin credentials. Use admin@pawfect.com / admin123', 'danger');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+        }
         
-        // Mock authentication
+        // Mock authentication for regular users
         const user = {
             id: Date.now(),
             email: email,
@@ -314,7 +356,10 @@ function redirectToDashboard() {
     console.log('Redirect function called with currentUser:', currentUser);
     console.log('User type:', currentUser?.type);
     
-    if (currentUser && currentUser.type === 'provider') {
+    if (currentUser && currentUser.type === 'admin') {
+        console.log('Redirecting to admin dashboard');
+        window.location.href = 'admin-dashboard.html';
+    } else if (currentUser && currentUser.type === 'provider') {
         console.log('Redirecting to provider dashboard');
         window.location.href = 'provider-dashboard.html';
     } else {
