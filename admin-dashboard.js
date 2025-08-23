@@ -1,4 +1,5 @@
 // Admin Dashboard JavaScript for PawFect
+console.log('Admin dashboard script loaded');
 
 // Global variables
 let adminData = {
@@ -11,55 +12,90 @@ let adminData = {
 
 // Initialize admin dashboard
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - Starting admin dashboard');
+    
+    // Check if required elements exist
+    checkRequiredElements();
+    
     initializeAdminDashboard();
 });
 
+// Check if required elements exist
+function checkRequiredElements() {
+    const requiredElements = [
+        'totalUsers',
+        'totalProviders', 
+        'totalBookings',
+        'totalRevenue',
+        'usersTable',
+        'providersTable',
+        'bookingsTable',
+        'recentActivityTable'
+    ];
+    
+    const missingElements = [];
+    
+    requiredElements.forEach(elementId => {
+        const element = document.getElementById(elementId);
+        if (!element) {
+            missingElements.push(elementId);
+        }
+    });
+    
+    if (missingElements.length > 0) {
+        console.error('Missing required elements:', missingElements);
+        showNotification(`Missing elements: ${missingElements.join(', ')}`, 'danger');
+    } else {
+        console.log('All required elements found');
+    }
+}
+
 function initializeAdminDashboard() {
     try {
-        // Show loading overlay
-        showLoadingOverlay();
+        console.log('Starting admin dashboard initialization...');
         
         // Check admin authentication
         checkAdminAuth();
+        console.log('Admin authentication checked');
         
         // Load initial data
         loadDashboardData();
+        console.log('Dashboard data loaded');
         
         // Setup event listeners
         setupEventListeners();
+        console.log('Event listeners setup');
         
         // Initialize charts
         initializeCharts();
+        console.log('Charts initialized');
         
         // Load mock data
         loadMockData();
-        
-        // Hide loading overlay
-        hideLoadingOverlay();
+        console.log('Mock data loaded');
         
         // Show welcome notification
         showNotification('Welcome to PawFect Admin Dashboard!', 'success');
+        console.log('Admin dashboard initialization completed');
         
     } catch (error) {
         console.error('Error initializing admin dashboard:', error);
-        hideLoadingOverlay();
         showNotification('Error initializing dashboard. Please refresh the page.', 'danger');
     }
 }
 
-// Loading overlay functions
+// Loading overlay functions (removed - no longer needed)
 function showLoadingOverlay() {
-    const overlay = document.getElementById('loadingOverlay');
-    if (overlay) {
-        overlay.style.display = 'flex';
-    }
+    // Function removed - no loading overlay needed
 }
 
 function hideLoadingOverlay() {
-    const overlay = document.getElementById('loadingOverlay');
-    if (overlay) {
-        overlay.style.display = 'none';
-    }
+    // Function removed - no loading overlay needed
+}
+
+// Force hide loading overlay (manual override)
+function forceHideLoading() {
+    // Function removed - no loading overlay needed
 }
 
 // Check admin authentication
@@ -86,20 +122,25 @@ function checkAdminAuth() {
 
 // Load dashboard data
 function loadDashboardData() {
-    // Load statistics
-    loadStatistics();
-    
-    // Load users
-    loadUsers();
-    
-    // Load providers
-    loadProviders();
-    
-    // Load bookings
-    loadBookings();
-    
-    // Load settings
-    loadSettings();
+    try {
+        // Load statistics
+        loadStatistics();
+        
+        // Load users
+        loadUsers();
+        
+        // Load providers
+        loadProviders();
+        
+        // Load bookings
+        loadBookings();
+        
+        // Load settings
+        loadSettings();
+    } catch (error) {
+        console.error('Error loading dashboard data:', error);
+        throw error;
+    }
 }
 
 // Setup event listeners
@@ -232,8 +273,9 @@ function updateNavigation(activeSection) {
 
 // Load mock data
 function loadMockData() {
-    // Mock users data
-    adminData.users = [
+    try {
+        // Mock users data
+        adminData.users = [
         {
             id: 1,
             name: 'John Doe',
@@ -331,6 +373,10 @@ function loadMockData() {
     updateBookingsTable();
     updateStatistics();
     updateRecentActivity();
+    } catch (error) {
+        console.error('Error loading mock data:', error);
+        throw error;
+    }
 }
 
 // Load statistics
@@ -676,6 +722,13 @@ function updateBookingsTableWithData(bookings) {
 // Initialize charts
 function initializeCharts() {
     try {
+        // Check if Chart.js is available
+        if (typeof Chart === 'undefined') {
+            console.error('Chart.js is not loaded');
+            showNotification('Chart.js library not loaded. Charts will not be displayed.', 'warning');
+            return;
+        }
+        
         // Growth Chart
         const growthCtx = document.getElementById('growthChart');
         if (growthCtx) {
@@ -1296,3 +1349,4 @@ window.viewBooking = viewBooking;
 window.editBooking = editBooking;
 window.logout = logout;
 window.testAdminDashboard = testAdminDashboard;
+window.forceHideLoading = forceHideLoading;
